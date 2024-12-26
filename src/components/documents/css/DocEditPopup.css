@@ -1,0 +1,42 @@
+.etitle {
+    margin: 10px;
+}
+
+.requestsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin: 0px 10px;
+    gap: 5px
+}
+
+.request {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(116, 89, 255, 0.1);
+    border: 1px solid rgba(86, 62, 193, 0.2);
+    border-radius: 3px;
+    height: 30px;
+    gap: 10px;
+    padding: 0px 10px;
+}
+
+.request p {
+    margin: 0;
+    line-height: 1;
+    font-size: .9em;
+}
+
+.rp {
+        padding-bottom: 12px!important;
+}
+
+.request svg {
+    cursor: pointer;
+}
+
+.request svg > path {
+    fill: #d84541;
+}

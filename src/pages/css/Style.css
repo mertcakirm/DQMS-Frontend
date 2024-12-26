@@ -1,0 +1,139 @@
+.content-container{
+    position: absolute;
+    left: 20%;
+    width: 80%;
+}
+
+.smalltitle{
+    font-size: 16px;
+    font-weight: bold;
+    color: #563EC1;
+}
+
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #ffffff !important;
+    background-color: #9f92d3 !important;
+    border-radius: 30px;
+}
+
+.nav-link {
+    color: #000!important;
+    border-radius: 30px!important;
+
+}
+
+.large-title {
+    background: linear-gradient(85deg, rgb(116, 89, 255) 0%, rgb(153, 131, 252) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.edit-btn-parent{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-btn{
+    background: #b9afe3;
+    color: #FFFFFF;
+    border: 0;
+    border-radius: 10px;
+    max-width:fit-content!important;
+    padding: 5px 20px;
+}
+
+.search-inp
+{
+    margin-left: 12px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(48, 47, 47, 0.5);
+}
+
+.search-inp:focus-visible{
+    outline: none;
+}
+
+.revision-card{
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.acceptbtn{
+    background: #50d750 !important;
+    width: 70px!important;
+    height: 50px;
+    border-radius: 20px;
+    border: 0;
+}
+.acceptbtn2{
+    background: #ee0202 !important;
+    width: 70px!important;
+    height: 50px;
+    border-radius: 20px;
+    border: 0;
+}
+
+.rev-card
+{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 100%;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.role-card{
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.unauthorized {
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(190, 8, 8);
+    font-size: 20rem;
+}
+
+.unauthorized > svg {
+    width: 130px;
+}
+
+.unauthorized > svg path {
+    fill: rgb(190, 8, 8);
+}
+
+.unauth-page-error
+{
+    color: red;
+}
+
+
+td{
+    max-width: 100px;
+    text-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+.untd{
+    width:auto !important;
+    max-width: none!important;
+    height: 80px !important;
+}
+
+@media only screen and (max-width: 1900px) {
+    .content-container{
+        position: absolute;
+        left: 25%;
+        width: 75%;
+    }
+}

@@ -1,0 +1,213 @@
+.agenda-container {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    height: 80%;
+    overflow-y: auto;
+}
+
+.selectors
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.month-selector {
+    display: flex;
+    justify-content: center;
+}
+
+.year-selector {
+    display: flex;
+    justify-content: center;
+}
+
+.month-selector select, .year-selector select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar-table th, .calendar-table td{
+    border: 1px solid #ddd!important;
+    text-align: center!important;
+    padding: 10px!important;
+    background: transparent!important;
+}
+
+.calendar-table th {
+    color: #555;
+    background: rgb(190,86,224);
+    background: linear-gradient(130deg, rgba(208, 145, 228, 0.3) 0%, rgba(145, 65, 220, 0.3) 87%)!important;
+}
+
+.calendar-day {
+    min-height: 80px;
+    max-height: 150px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.calendar-day span {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.calendar-day ul {
+    list-style: none;
+    padding-left: 0px!important;
+}
+
+.event-item {
+    font-size: 12px;
+    color: white;
+    padding: 4px 6px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup {
+    background-color: #fff;
+    padding: 35px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 430px;
+    width: 100%;
+}
+
+.popup h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.popup .divider {
+    background-color: #ccc;
+    height: 1px;
+    border-radius: 1px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.popup input, .popup textarea, .popup select  {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.popup .color-selector {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: start;
+    margin-bottom: 14px;
+}
+
+.popup .color-selector input {
+    display: none;
+}
+
+.popup .color-selector label {
+    display: block;
+}
+
+.popup .color-selector .color-box {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup > .emailContainer > label {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+}
+
+.popup > .emailContainer label > input[type=checkbox] {
+    width: 14px;
+    height: 14px;
+    margin-bottom: 0px;
+    margin-right: 5px;
+    border-radius: 4px;
+}
+
+.popup .email-checkbox-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.popup .email-checkbox-list label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: .9em;
+}
+
+.popup .button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.button-group button {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.button-group .deleteBtn {
+    background-color: rgba(191, 20, 20, 0.8);
+}
+
+.button-group .cancelBtn {
+    background-color: #6c757d;
+}
+
+.popup button:last-child {
+
+    background: linear-gradient(90deg, rgb(116, 89, 255) 0%, rgb(164, 89, 255) 60%);
+}
