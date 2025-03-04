@@ -12,7 +12,7 @@ export const ActionPerm = Object.freeze({
     UserModify: 2 << 9,
     SendMail: 2 << 10
 });
-
+//4094 full yetki
 export function getPermTitle(perm) {
     const permTitles = {
         [ActionPerm.None]: "Yetki Yok",
