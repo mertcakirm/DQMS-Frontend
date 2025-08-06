@@ -5,6 +5,7 @@ import {deleteUser} from "../../API/User.js";
 import {deleteRole} from "../../API/Role.js";
 import {deleteManuelMail} from "../../API/Admin.js";
 import '../css/process.css'
+import {deleteDocument} from "../../API/Documents.js";
 
 const ProcessPopup = ({type, text, id, onClose,}) => {
 
@@ -23,9 +24,17 @@ const ProcessPopup = ({type, text, id, onClose,}) => {
                     await deleteManuelMail(id);
                     toast.success("Mail başarıyla silindi!");
                     break;
+                case "delete_archive":
+                    await deleteDocument(id);
+                    toast.success("Arşiv dokümanı başarıyla silindi!");
+                    break;
+                case "delete_document":
+                    await deleteDocument(id);
+                    toast.success("Doküman başarıyla silindi!");
+                    break;
 
                 default:
-                    toast.error("Unknown action type.");
+                    toast.error("Bilinmeyen işlem!");
                     console.error("Unknown type");
                     return;
             }
@@ -36,7 +45,6 @@ const ProcessPopup = ({type, text, id, onClose,}) => {
             onClose(false);
         }
     };
-
 
     return (
         <div className="popup-overlay">

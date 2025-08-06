@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App.jsx";
 import { ActionPerm, checkPermFromRole } from "../../API/permissions.js";
-import { getAllDocuments, deleteDocument } from "../../API/Documents.js";
+import { getAllDocuments } from "../../API/Documents.js";
 import { DocumentType } from "../../Helpers/typeMapper.js";
 import ArchiveDurationPopup from "./ArchivePopup.jsx";
 import { useSearchParams } from "react-router-dom";
 import UnauthPage from "../other/UnauthPage.jsx";
+import ProcessPopup from "../other/ProcessPopUp.jsx";
 
 const ArchiveDuration = () => {
   const [documents, setDocuments] = useState([]);
@@ -14,8 +15,25 @@ const ArchiveDuration = () => {
   const [permissionCheck, setPermissionCheck] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupData, setPopupData] = useState(null);
-
+  const [isProcessPopupOpen, setProcessIsPopupOpen] = useState(false);
   const user = useContext(UserContext);
+  const [refresh, setRefresh] = useState(false);
+  const [processState, setProcessState] = useState({
+    processtype: null,
+    text: "",
+    id: null,
+  });
+
+  const toggleProcessPopup = (type, id, text) => {
+    setProcessIsPopupOpen(!isProcessPopupOpen);
+    setProcessState(prevState => ({
+      ...prevState,
+      processtype: type,
+      text: text,
+      id: id
+    }));
+  };
+
   if (!checkPermFromRole(user.roleValue, ActionPerm.DocumentViewAll))
     return <UnauthPage />;
   const handlePrint = () => {
@@ -274,7 +292,7 @@ const ArchiveDuration = () => {
 
   useEffect(() => {
     fetchDocuments();
-  }, [pageNum, search]);
+  }, [pageNum, search,refresh]);
 
   useEffect(() => {
     if (checkPermFromRole(user.roleValue, ActionPerm.DocumentViewAll)) {
@@ -294,10 +312,6 @@ const ArchiveDuration = () => {
       fetchDocuments();
     }, 800);
     setSearchTimeout(newTimeout);
-  };
-
-  const handleDelete = (id) => {
-    deleteDocument(id);
   };
 
   return (
@@ -359,12 +373,7 @@ const ArchiveDuration = () => {
                 <td>{doc.fields.select1.value || "Belirtilmemiş"}</td>
                 <td>
                   <button
-                    onClick={() => {
-                      handleDelete(doc.id);
-                      setDocuments((prev) =>
-                        prev.filter((d) => d.id != doc.id),
-                      );
-                    }}
+                    onClick={() => toggleProcessPopup("delete_archive", doc.id,"Arşiv kaydı silinsin mi?")}
                     className="edit-btn"
                   >
                     Sil
@@ -404,6 +413,19 @@ const ArchiveDuration = () => {
             setIsPopupOpen(b);
           }}
         />
+      )}
+      {isProcessPopupOpen && (
+          <ProcessPopup
+              onClose={(b) => {
+                if (b === false) {
+                  setProcessIsPopupOpen(b);
+                  setRefresh(!refresh);
+                }
+              }}
+              text={processState.text}
+              type={processState.processtype}
+              id={processState.id}
+          />
       )}
     </div>
   );

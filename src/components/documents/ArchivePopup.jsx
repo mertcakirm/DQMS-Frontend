@@ -15,6 +15,7 @@ import {
   rejectDocumentRevision,
 } from "../../API/DocumentRevision.js";
 import { DMode } from "../../Helpers/DMode.js";
+import {toast} from "react-toastify";
 
 const ArchiveDurationPopup = ({ mode, id, popupCloser }) => {
   const [unit, setUnit] = useState("");
