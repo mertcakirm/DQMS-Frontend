@@ -5,7 +5,7 @@ import { getAllDocuments, deleteDocument } from "../../API/Documents.js";
 import { DocumentType } from "../../Helpers/typeMapper.js";
 import ArchiveDurationPopup from "./ArchivePopup.jsx";
 import { useSearchParams } from "react-router-dom";
-import UnauthPage from "../UnauthPage.jsx";
+import UnauthPage from "../other/UnauthPage.jsx";
 
 const ArchiveDuration = () => {
   const [documents, setDocuments] = useState([]);

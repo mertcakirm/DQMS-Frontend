@@ -1,21 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
-import Sidebar from "../components/sidebar.jsx";
+import Sidebar from "../other/sidebar.jsx";
 import {
   getAllDocuments,
   getDocumentSharedToMe,
   getSelfDocuments,
-} from "../API/Documents.js";
+} from "../../API/Documents.js";
 import {
   DocumentType,
   getTypeTitle,
   getTypeUrl,
-} from "../Helpers/typeMapper.js";
-import { UserContext } from "../App.jsx";
+} from "../../Helpers/typeMapper.js";
+import { UserContext } from "../../App.jsx";
 import {
   ActionPerm,
   checkPerm,
   checkPermFromRole,
-} from "../API/permissions.js";
+} from "../../API/permissions.js";
 
 const MyDocuments = () => {
   const [documentList, setDocumentList] = useState([]);
@@ -49,9 +49,7 @@ const MyDocuments = () => {
   };
 
   return (
-    <div>
-      <Sidebar />
-      <div className="content-container p-5">
+      <div className="p-5">
         <div className="row justify-content-between">
           <h3 className="col-6 large-title">
             Benimle Paylaşılan Doküman Listesi
@@ -139,8 +137,7 @@ const MyDocuments = () => {
             sonraki
           </button>
         </div>
-      </div>
-    </div>
+</div>
   );
 };
 

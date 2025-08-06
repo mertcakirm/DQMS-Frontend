@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Sidebar from "../components/sidebar.jsx";
+import Sidebar from "../components/other/sidebar.jsx";
 import SwotComp from "../components/process/Swot.jsx";
 import PestleComp from "../components/process/Pestle.jsx";
 import NeedsAndExpectations from "../components/process/NeedsAndExpectations.jsx";
@@ -31,7 +31,7 @@ const OccupationalHealthAndSafety = () => {
     return (
         <div className="document-parent">
             <Sidebar/>
-            <div className="content-container">
+            <div className="content-container" data-aos="fade-up">
                 <div className="step-content">{renderCurrentStepComponent()}</div>
             </div>
         </div>

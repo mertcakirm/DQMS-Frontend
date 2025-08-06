@@ -28,9 +28,13 @@ import Hire from "./pages/Hire.jsx";
 import ProjectMonitoring from "./pages/ProjectMonitoring.jsx";
 import ApplicationEvaluation from "./pages/ApplicationEvaluation.jsx";
 import AdminPanel from "./pages/AdminPanel.jsx";
-import MyDocuments from "./pages/myDocuments.jsx";
+import MyDocuments from "./components/documents/myDocuments.jsx";
 import OccupationalHealthAndSafety from "./pages/OccupationalHealthAndSafety.jsx";
 import CompletedRevision from "./pages/CompletedRevision.jsx";
+import {ToastContainer} from "react-toastify";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export const UserContext = createContext();
 export const SidebarDataContext = createContext();
 
@@ -70,9 +74,16 @@ const ProtectedRoutes = () => {
 };
 
 const App = () => {
+
+  useEffect(() => {
+    AOS.init({duration: 700});
+  }, []);
+
   return (
     <>
       <BrowserRouter>
+        <ToastContainer theme="light" closeOnClick position="bottom-right" autoClose={3000} />
+
         <Routes>
           <Route path="/" element={<Login />} />
           <Route element={<ProtectedRoutes />}>
@@ -221,7 +232,7 @@ const App = () => {
               path="/basvuru/prosedur"
               element={<ApplicationEvaluation />}
             />
-            <Route path="/kendi-dokumanlarim" element={<MyDocuments />} />
+            <Route path="/dokuman/dokumanlarim" element={<DocumentParent />} />
             <Route path="/is-sagligi-ve-guvenligi/zimmet" element={<OccupationalHealthAndSafety />} />
             <Route path="/is-sagligi-ve-guvenligi/prosedur" element={<OccupationalHealthAndSafety />} />
             <Route path="/onay-bekleyen-revizyonlar" element={<CompletedRevision />} />

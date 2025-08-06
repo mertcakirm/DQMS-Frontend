@@ -4,7 +4,7 @@ import WasteTracking from "../components/environment/WasteTracking.jsx";
 import Directive1 from "../components/environment/Directive1.jsx";
 import Directive2 from "../components/environment/Directive2.jsx";
 
-import Sidebar from "../components/sidebar.jsx";
+import Sidebar from "../components/other/sidebar.jsx";
 import ProcedurEnvi from "../components/environment/ProcedurEnvi.jsx";
 
 
@@ -33,7 +33,7 @@ const Environment = () => {
     return (
         <div className="document-parent">
             <Sidebar />
-            <div className="content-container">
+            <div className="content-container" data-aos="fade-up">
                 <div className="step-content">{renderCurrentStepComponent()}</div>
             </div>
         </div>

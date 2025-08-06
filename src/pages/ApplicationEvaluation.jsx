@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Sidebar from "../components/sidebar.jsx";
+import Sidebar from "../components/other/sidebar.jsx";
 import ApplicationEvaluationForm from "../components/applicationevaluation/ApplicationEvaluationForm.jsx";
 import ApplicationEvaluationForm2 from "../components/applicationevaluation/ApplicationEvaluationForm2.jsx";
 import ProcedureEvaluation from "../components/applicationevaluation/ProcedureEvaluation.jsx";
@@ -38,7 +38,7 @@ const ApplicationEvaluation = () => {
     return (
         <div className="document-parent">
             <Sidebar/>
-            <div className="content-container">
+            <div className="content-container" data-aos="fade-up">
                 <div className="step-content">{renderCurrentStepComponent()}</div>
             </div>
         </div>

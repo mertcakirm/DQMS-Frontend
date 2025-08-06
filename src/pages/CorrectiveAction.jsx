@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
-import Sidebar from "../components/sidebar.jsx";
+import Sidebar from "../components/other/sidebar.jsx";
 import CorrectiveActionForm from "../components/correctiveaction/CorrectiveActionForm.jsx";
 import CorrectiveActionTable from "../components/correctiveaction/CorrectiveActionTable.jsx";
 import ProcedurCorrective from "../components/correctiveaction/ProcedurCorrective.jsx";
@@ -28,7 +28,7 @@ const CorrectiveAction  = () => {
     };
 
     return (
-        <div className="document-parent">
+        <div className="document-parent" data-aos="fade-up">
             <Sidebar />
             <div className="content-container">
                 <div className="step-content">{renderCurrentStepComponent()}</div>

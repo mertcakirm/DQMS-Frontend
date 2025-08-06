@@ -12,10 +12,10 @@ import {
     rejectDocumentRevision
 } from "../../API/DocumentRevision.js";
 import {useSearchParams} from "react-router-dom";
-import FileUpload from "../fileUpload.jsx";
+import FileUpload from "../other/fileUpload.jsx";
 import {UserContext} from "../../App.jsx";
 import {ActionPerm, checkPermFromRole} from "../../API/permissions.js";
-import UnauthPage from "../UnauthPage.jsx";
+import UnauthPage from "../other/UnauthPage.jsx";
 
 const LegalProcedur = () => {
     const [fileList, setFileList] = useState([]);

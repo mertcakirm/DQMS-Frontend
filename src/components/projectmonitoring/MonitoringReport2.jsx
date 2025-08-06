@@ -16,7 +16,7 @@ import { DocumentType } from "../../Helpers/typeMapper.js";
 import { DMode } from "../../Helpers/DMode.js";
 import {UserContext} from "../../App.jsx";
 import {ActionPerm, checkPermFromRole} from "../../API/permissions.js";
-import UnauthPage from "../UnauthPage.jsx";
+import UnauthPage from "../other/UnauthPage.jsx";
 
 const MonitoringReport2 = () => {
   const [title, setTitle] = useState("");

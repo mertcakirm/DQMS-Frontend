@@ -16,7 +16,7 @@ import {
 } from "../../API/DocumentRevision.js";
 import { DMode } from "../../Helpers/DMode.js";
 import { useSearchParams } from "react-router-dom";
-import UnauthPage from "../UnauthPage.jsx";
+import UnauthPage from "../other/UnauthPage.jsx";
 
 const PestleComp = () => {
   const [category, setCategory] = useState("political");

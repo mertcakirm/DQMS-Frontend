@@ -3,7 +3,7 @@ import {getAllDocuments} from "../../API/Documents.js";
 import {DocumentType} from "../../Helpers/typeMapper.js";
 import {UserContext} from "../../App.jsx";
 import {ActionPerm, checkPermFromRole} from "../../API/permissions.js";
-import UnauthPage from "../UnauthPage.jsx";
+import UnauthPage from "../other/UnauthPage.jsx";
 
 const AccidentIncidentTracking = () => {
 

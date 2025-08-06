@@ -7,13 +7,31 @@ import {
   getTypeTitle,
   getTypeUrl,
 } from "../../Helpers/typeMapper.js";
+import ProcessPopup from "../other/ProcessPopUp.jsx";
 
 const DocumentList = () => {
   const [documents, setDocuments] = useState([]);
   const [pageNum, setPageNum] = useState(1);
   const [search, setSearch] = useState(null);
   const user = useContext(UserContext);
+  const [reflesh, setReflesh] = useState(false);
   const [permissionCheck, setPermissionCheck] = useState(false);
+  const [isProcessPopupOpen, setProcessIsPopupOpen] = useState(false);
+  const [processState, setProcessState] = useState({
+    processtype: null,
+    text: "",
+    id: null,
+  });
+
+  const toggleProcessPopup = (type, id, text) => {
+    setProcessIsPopupOpen(!isProcessPopupOpen);
+    setProcessState(prevState => ({
+      ...prevState,
+      processtype: type,
+      text: text,
+      id: id
+    }));
+  };
 
   const handlePrint = () => {
     const elements = document.querySelectorAll("[field-short-name]");
@@ -324,7 +342,7 @@ const DocumentList = () => {
   return (
     <div className="container-fluid p-5">
       <div className="row justify-content-between">
-        <h3 className="col-6 large-title">MASTER DÖKÜMAN LİSTESİ</h3>
+        <h3 className="col-6 large-title">DÖKÜMAN LİSTESİ</h3>
         <div className="col-6 row justify-content-end">
           <button onClick={handlePrint} className="col-2 print-btn">
             <svg
@@ -401,12 +419,7 @@ const DocumentList = () => {
                     <button
                       className="edit-btn"
                       style={{ marginLeft: "8px" }}
-                      onClick={() => {
-                        deleteDocument(doc.id);
-                        setDocuments((prev) =>
-                          prev.filter((d) => d.id !== doc.id),
-                        );
-                      }}
+                      onClick={()=>toggleProcessPopup("delete_document", doc.id,"Doküman Silinsin mi?")}
                     >
                       Sil
                     </button>
@@ -437,6 +450,19 @@ const DocumentList = () => {
           sonraki
         </button>
       </div>
+      {isProcessPopupOpen && (
+          <ProcessPopup
+              onClose={(b) => {
+                if (b === false) {
+                  setProcessIsPopupOpen(b);
+                  setReflesh(!reflesh);
+                }
+              }}
+              text={processState.text}
+              type={processState.processtype}
+              id={processState.id}
+          />
+      )}
     </div>
   );
 };

@@ -1,0 +1,282 @@
+.popup-content2 {
+    background: #FFFFFF;
+    border: 1px solid #fff;
+    color: #000;
+    position: relative;
+    overflow:  hidden;
+    border-radius: 10px;
+    width: 600px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.note-table{
+    overflow: hidden!important;
+    border-radius: 10px;
+}
+
+
+.popup-content-note{
+    width: 80%;
+    overflow: hidden;
+}
+
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-header h2 {
+    margin: 0;
+}
+
+
+
+.popup-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.popup-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.popup-accepted-btn{
+    background: #000;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 5px 30px;
+    text-align: center;
+    width: fit-content!important;
+}
+
+
+.popup-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+}
+
+.ui-error-circle {
+    stroke-dasharray: 260.75219024795285px, 260.75219024795285px;
+    stroke-dashoffset: 260.75219024795285px;
+    animation: ani-error-circle 0.6s linear;
+}
+
+.ui-error-line1 {
+    stroke-dasharray: 54px 55px;
+    stroke-dashoffset: 55px;
+    stroke-linecap: round;
+    animation: ani-error-line 0.15s 0.6s linear both;
+}
+
+.ui-error-line2 {
+    stroke-dasharray: 54px 55px;
+    stroke-dashoffset: 55px;
+    stroke-linecap: round;
+    animation: ani-error-line 0.2s 0.6s linear both;
+}
+
+@keyframes ani-error-line {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes ani-error-circle {
+    0% {
+        stroke-dasharray: 0, 260.75219024795285px;
+        stroke-dashoffset: 0;
+    }
+    35% {
+        stroke-dasharray: 120px, 120px;
+        stroke-dashoffset: -120px;
+    }
+    70% {
+        stroke-dasharray: 0, 260.75219024795285px;
+        stroke-dashoffset: -260.75219024795285px;
+    }
+    100% {
+        stroke-dasharray: 260.75219024795285px, 0;
+        stroke-dashoffset: -260.75219024795285px;
+    }
+}
+
+
+.success-checkmark {
+    width: 80px;
+
+    height: 115px;
+    margin: 0 auto;
+
+    .check-icon {
+        width: 80px;
+        height: 80px;
+        position: relative;
+        border-radius: 50%;
+        box-sizing: content-box;
+        border: 4px solid #4caf50;
+
+        &::before {
+            top: 3px;
+            left: -2px;
+            width: 30px;
+            transform-origin: 100% 50%;
+            border-radius: 100px 0 0 100px;
+        }
+
+        &::after {
+            top: 0;
+            left: 30px;
+            width: 60px;
+            transform-origin: 0 50%;
+            border-radius: 0 100px 100px 0;
+            animation: rotate-circle 4.25s ease-in;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            height: 100px;
+            position: absolute;
+            background: #000;
+            transform: rotate(-45deg);
+        }
+
+        .icon-line {
+            height: 5px;
+            background-color: #4caf50;
+            display: block;
+            border-radius: 2px;
+            position: absolute;
+            z-index: 10;
+
+            &.line-tip {
+                top: 46px;
+                left: 14px;
+                width: 25px;
+                transform: rotate(45deg);
+                animation: icon-line-tip 0.75s;
+            }
+
+            &.line-long {
+                top: 38px;
+                right: 8px;
+                width: 47px;
+                transform: rotate(-45deg);
+                animation: icon-line-long 0.75s;
+            }
+        }
+
+        .icon-circle {
+            top: -4px;
+            left: -4px;
+            z-index: 10;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            box-sizing: content-box;
+            border: 4px solid rgba(76, 175, 80, 0.5);
+        }
+
+        .icon-fix {
+            top: 8px;
+            width: 5px;
+            left: 26px;
+            z-index: 1;
+            height: 85px;
+            position: absolute;
+            transform: rotate(-45deg);
+            background-color: #000;
+        }
+    }
+}
+
+@keyframes rotate-circle {
+    0% {
+        transform: rotate(-45deg);
+    }
+    5% {
+        transform: rotate(-45deg);
+    }
+    12% {
+        transform: rotate(-405deg);
+    }
+    100% {
+        transform: rotate(-405deg);
+    }
+}
+
+@keyframes icon-line-tip {
+    0% {
+        width: 0;
+        left: 1px;
+        top: 19px;
+    }
+    54% {
+        width: 0;
+        left: 1px;
+        top: 19px;
+    }
+    70% {
+        width: 50px;
+        left: -8px;
+        top: 37px;
+    }
+    84% {
+        width: 17px;
+        left: 21px;
+        top: 48px;
+    }
+    100% {
+        width: 25px;
+        left: 14px;
+        top: 45px;
+    }
+}
+
+@keyframes icon-line-long {
+    0% {
+        width: 0;
+        right: 46px;
+        top: 54px;
+    }
+    65% {
+        width: 0;
+        right: 46px;
+        top: 54px;
+    }
+    84% {
+        width: 55px;
+        right: 0px;
+        top: 35px;
+    }
+    100% {
+        width: 47px;
+        right: 8px;
+        top: 38px;
+    }
+}
+
+
+
+@media only screen and (max-width: 700px) {
+    .popup-content-note{
+        width: 90%;
+    }
+
+    .note-table{
+        overflow-y: hidden;
+        overflow-x: scroll!important;
+    }
+}

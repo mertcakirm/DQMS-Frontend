@@ -1,4 +1,4 @@
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/other/sidebar.jsx";
 import { useEffect, useState } from "react";
 import {
   acceptRevisionRequest,
@@ -49,7 +49,7 @@ const MyRevision = () => {
   return (
     <div className="document-parent">
       <Sidebar />
-      <div className="content-container">
+      <div className="content-container" data-aos="fade-up">
         <div className="container-fluid p-5">
           <div className="row">
             <h3 className="col-12 mb-5 large-title">Revizyonlarım</h3>

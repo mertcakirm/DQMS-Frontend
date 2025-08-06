@@ -13,7 +13,7 @@ import {
 } from "../../API/DocumentRevision.js";
 import {DMode} from "../../Helpers/DMode.js";
 import {ActionPerm, checkPermFromRole} from "../../API/permissions.js";
-import UnauthPage from "../UnauthPage.jsx";
+import UnauthPage from "../other/UnauthPage.jsx";
 
 const IsgRisk = () => {
     const[title, setTitle] = useState('')

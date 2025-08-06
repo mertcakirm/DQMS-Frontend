@@ -4,8 +4,9 @@ import DocumentList from "../components/documents/DocumentList.jsx";
 import ArchiveDuration from "../components/documents/ArchiveDuration.jsx";
 import ExternalDocuments from "../components/documents/ExternalDocuments.jsx";
 import CreateDocuments from "../components/documents/CreateDocuments.jsx";
-import Sidebar from "../components/sidebar.jsx";
+import Sidebar from "../components/other/sidebar.jsx";
 import ProcedurDoc from "../components/documents/ProcedurDoc.jsx";
+import MyDocuments from "../components/documents/myDocuments.jsx";
 
 
 
@@ -19,6 +20,7 @@ const DocumentParent = () => {
         { id: 3, path: "/dokuman/dis-kaynakli", component: <ExternalDocuments /> },
         { id: 4, path: "/dokuman/olustur", component: <CreateDocuments /> },
         { id: 5, path: "/dokuman/prosedur", component: <ProcedurDoc /> },
+        { id: 6, path: "/dokuman/dokumanlarim", component: <MyDocuments /> },
 
     ];
 
@@ -35,7 +37,7 @@ const DocumentParent = () => {
     return (
         <div className="document-parent">
             <Sidebar />
-            <div className="content-container">
+            <div className="content-container" data-aos="fade-up">
                 <div className="step-content">{renderCurrentStepComponent()}</div>
             </div>
         </div>

@@ -11,10 +11,10 @@ import {
     getRevision,
     rejectDocumentRevision
 } from "../../API/DocumentRevision.js";
-import FileUpload from "../fileUpload.jsx";
+import FileUpload from "../other/fileUpload.jsx";
 import {UserContext} from "../../App.jsx";
 import {ActionPerm, checkPermFromRole} from "../../API/permissions.js";
-import UnauthPage from "../UnauthPage.jsx";
+import UnauthPage from "../other/UnauthPage.jsx";
 
 const OccupationalProsedur = () => {
     const [fileList, setFileList] = useState([]);

@@ -13,7 +13,7 @@ import {
 } from "../../API/DocumentRevision.js";
 import {useSearchParams} from "react-router-dom";
 import {DMode} from "../../Helpers/DMode.js";
-import UnauthPage from "../UnauthPage.jsx";
+import UnauthPage from "../other/UnauthPage.jsx";
 
 const PeriodRisk = () => {
     const[title, setTitle] = useState('')

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Sidebar from "../components/sidebar.jsx";
+import Sidebar from "../components/other/sidebar.jsx";
 import AccidentIncidentTracking from "../components/nearmiss/AccidentIncidentTracking.jsx";
 import AccidentIncidentTrackingForm from "../components/nearmiss/AccidentIncidentTrackingForm.jsx";
 import IncidentReportingForm from "../components/nearmiss/IncidentReportingForm.jsx";
@@ -31,7 +31,7 @@ const RiskAnalize = () => {
     return (
         <div className="document-parent">
             <Sidebar />
-            <div className="content-container">
+            <div className="content-container" data-aos="fade-up">
                 <div className="step-content">{renderCurrentStepComponent()}</div>
             </div>
         </div>

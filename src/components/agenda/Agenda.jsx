@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./agenda.css";
-import Sidebar from "../sidebar.jsx";
+import Sidebar from "../other/sidebar.jsx";
 import {
   createNewAgendaEvent,
   deleteAgendaEvent,
@@ -157,7 +157,7 @@ function Agenda() {
   return (
     <div className="document-parent">
       <Sidebar />
-      <div className="content-container px-5">
+      <div className="content-container px-5" data-aos="fade-up">
         <div
           className="row justify-content-between align-items-center"
           style={{ height: "100vh" }}

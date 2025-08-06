@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import IsgRisk from "../components/risks/isgRisk.jsx";
 import PeriodRisk from "../components/risks/periodRisk.jsx";
-import Sidebar from "../components/sidebar.jsx";
+import Sidebar from "../components/other/sidebar.jsx";
 import RisksProcedur from "../components/risks/RisksProcedur.jsx";
 
 
@@ -31,7 +31,7 @@ const RiskAnalize = () => {
     return (
         <div className="document-parent">
             <Sidebar />
-            <div className="content-container">
+            <div className="content-container" data-aos="fade-up">
                 <div className="step-content">{renderCurrentStepComponent()}</div>
             </div>
         </div>

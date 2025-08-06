@@ -13,7 +13,7 @@ import {
     getRevision,
     rejectDocumentRevision
 } from "../../API/DocumentRevision.js";
-import UnauthPage from "../UnauthPage.jsx";
+import UnauthPage from "../other/UnauthPage.jsx";
 
 
 

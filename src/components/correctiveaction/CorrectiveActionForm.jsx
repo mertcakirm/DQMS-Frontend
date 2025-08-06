@@ -17,8 +17,8 @@ import {
 } from "../../API/DocumentRevision.js";
 import { UserContext } from "../../App.jsx";
 import { ActionPerm, checkPermFromRole } from "../../API/permissions.js";
-import UnauthPnl from "../unauthPnl.jsx";
-import UnauthPage from "../UnauthPage.jsx";
+import UnauthPnl from "../other/unauthPnl.jsx";
+import UnauthPage from "../other/UnauthPage.jsx";
 const CorrectiveActionForm = () => {
   const [immediateCorrections, setImmediateCorrections] = useState([]);
   const [correctiveActions, setCorrectiveActions] = useState([]);

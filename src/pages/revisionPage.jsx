@@ -1,4 +1,4 @@
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/other/sidebar.jsx";
 import { useState ,useEffect } from "react";
 import {getUsers} from "../API/User.js";
 import {createDocument} from "../API/Documents.js";
@@ -45,7 +45,7 @@ const RevisionPage = () => {
     return (
         <div className="document-parent">
             <Sidebar />
-            <div className="content-container">
+            <div className="content-container" data-aos="fade-up">
                 <div className="container-fluid p-5">
                     <div className="row justify-content-between">
                         <h3 className="col-6 large-title">Revizyon Talep Formu</h3>

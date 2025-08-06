@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
-import { SvgBin, Svgdoc, SvgDownload } from "./documents/generalcomp.jsx";
-import { generateRandomId } from "../Helpers/HelperFunctions.js";
-import { getDocumentAttachmentFromAID } from "../API/DocumentAttachment.js";
+import { SvgBin, Svgdoc, SvgDownload } from "../documents/generalcomp.jsx";
+import { generateRandomId } from "../../Helpers/HelperFunctions.js";
+import { getDocumentAttachmentFromAID } from "../../API/DocumentAttachment.js";
 
 function FileUpload({ fileList, type, onUpload, onRemove, canUpload }) {
   const fileUploadInputId = generateRandomId(5);

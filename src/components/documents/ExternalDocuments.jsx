@@ -9,7 +9,7 @@ import {
   acceptDocumentRevision,
   rejectDocumentRevision,
 } from "../../API/DocumentRevision.js";
-import UnauthPage from "../UnauthPage.jsx";
+import UnauthPage from "../other/UnauthPage.jsx";
 
 const ExternalDocuments = () => {
   const [documents, setDocuments] = useState([]);

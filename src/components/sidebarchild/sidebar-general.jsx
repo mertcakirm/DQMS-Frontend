@@ -20,7 +20,7 @@ const SidebarGeneral = () => {
                 { text: "Doküman Listesi", href: "/dokuman/listesi" },
                 { text: "Döküman Arşiv Süresi", href: "/dokuman/arsiv-suresi" },
                 { text: "Dış Kaynaklı Döküman Listesi", href: "/dokuman/dis-kaynakli" },
-                { text: "Benimle Paylaşılan Dokümanlar", href: "/kendi-dokumanlarim" },
+                { text: "Benimle Paylaşılan Dokümanlar", href: "/dokuman/dokumanlarim" },
                 { text: "Onay Bekleyen Revizyonlar", href: "/onay-bekleyen-revizyonlar" },
                 {text: "Prosedür", href: "/dokuman/prosedur"},
 

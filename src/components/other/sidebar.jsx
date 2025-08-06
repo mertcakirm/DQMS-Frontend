@@ -1,16 +1,16 @@
-import "./css/sidebar.css";
-import SidebarGeneral from "./sidebarchild/sidebar-general.jsx";
-import SidebarInstitutional from "./sidebarchild/sidebar-institutional.jsx";
-import { eraseCookie } from "../API/constants.js";
+import "../css/sidebar.css";
+import SidebarGeneral from "../sidebarchild/sidebar-general.jsx";
+import SidebarInstitutional from "../sidebarchild/sidebar-institutional.jsx";
+import { eraseCookie } from "../../API/constants.js";
 import { useContext, useEffect, useState } from "react";
-import { getUserPfp } from "../API/User.js";
-import logo from "../assets/logo1.png";
+import { getUserPfp } from "../../API/User.js";
+import logo from "../../assets/logo1.png";
 import {
   ActionPerm,
   checkPerms,
   checkPermsFromRole,
-} from "../API/permissions.js";
-import { SidebarDataContext, UserContext } from "../App.jsx";
+} from "../../API/permissions.js";
+import { SidebarDataContext, UserContext } from "../../App.jsx";
 
 const Sidebar = () => {
   const [profileImage, setProfileImage] = useState("");
@@ -35,7 +35,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className="sidebar-container">
+    <div className="sidebar-container"  data-aos="fade-in">
       <div style={{ display: "flex", flexDirection: "column", rowGap: "30px" }}>
         <div className="sidebar-header">
           <a className="default-a" href="/anasayfa">

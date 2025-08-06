@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import EmergencyDrill from "../components/emergency/EmergencyDrill.jsx";
 import EmergencyDrillEnvi from "../components/emergency/EmergencyDrillEnvi.jsx";
 import EmergencyAction from "../components/emergency/EmergencyAction.jsx";
-import Sidebar from "../components/sidebar.jsx";
+import Sidebar from "../components/other/sidebar.jsx";
 import ProcedurEmergency from "../components/emergency/ProcedurEmergency.jsx";
 
 
@@ -32,7 +32,7 @@ const RiskAnalize = () => {
     return (
         <div className="document-parent">
             <Sidebar />
-            <div className="content-container">
+            <div className="content-container" data-aos="fade-up">
                 <div className="step-content">{renderCurrentStepComponent()}</div>
             </div>
         </div>

@@ -7,7 +7,7 @@ import {getUsers} from "../../API/User.js";
 import {useSearchParams} from "react-router-dom";
 import {UserContext} from "../../App.jsx";
 import {ActionPerm, checkPermFromRole} from "../../API/permissions.js";
-import UnauthPage from "../UnauthPage.jsx";
+import UnauthPage from "../other/UnauthPage.jsx";
 const Suitability = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [documents, setDocuments] = useState([]);

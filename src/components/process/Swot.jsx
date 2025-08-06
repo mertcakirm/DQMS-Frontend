@@ -12,7 +12,7 @@ import {
     rejectDocumentRevision
 } from "../../API/DocumentRevision.js";
 import {DMode} from "../../Helpers/DMode.js";
-import UnauthPage from "../UnauthPage.jsx";
+import UnauthPage from "../other/UnauthPage.jsx";
 
 const SwotComp = () => {
 

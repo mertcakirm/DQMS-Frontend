@@ -16,7 +16,7 @@ import {
 import { useSearchParams } from "react-router-dom";
 import {UserContext} from "../../App.jsx";
 import {ActionPerm, checkPermFromRole} from "../../API/permissions.js";
-import UnauthPage from "../UnauthPage.jsx";
+import UnauthPage from "../other/UnauthPage.jsx";
 
 const Debit = () => {
   const [title, setTitle] = useState("");

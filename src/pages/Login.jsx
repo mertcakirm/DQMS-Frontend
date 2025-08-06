@@ -111,6 +111,7 @@ const Login = () => {
       <form
         className="col-lg-6 col-lg-4 p-5 login-form row text-center justify-content-center"
         onSubmit={login}
+        data-aos="fade-up"
       >
         <h4 className="login-form-header">QDMS SİSTEMİNE HOŞGELDİNİZ</h4>
         {errorMessage && (

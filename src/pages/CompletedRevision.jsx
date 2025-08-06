@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import Sidebar from "../components/sidebar.jsx";
+import Sidebar from "../components/other/sidebar.jsx";
 import { getTypeTitle, getTypeUrl } from "../Helpers/typeMapper.js";
 import { UserContext } from "../App.jsx";
 import { ActionPerm, checkPermFromRole } from "../API/permissions.js";
@@ -34,7 +34,7 @@ const CompletedRevision = () => {
   return (
     <div>
       <Sidebar />
-      <div className="content-container p-5">
+      <div className="content-container p-5" data-aos="fade-up">
         <div className="row justify-content-between">
           <h3 className="col-6 large-title">Onay Bekleyen Revizyonlar</h3>
           <div className="col-6 row justify-content-end">
