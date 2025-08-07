@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import EmergencyDrill from "../components/emergency/EmergencyDrill.jsx";
 import EmergencyDrillEnvi from "../components/emergency/EmergencyDrillEnvi.jsx";
 import EmergencyAction from "../components/emergency/EmergencyAction.jsx";
-import Sidebar from "../components/other/sidebar.jsx";
+import Sidebar from "../components/other/Navbar.jsx";
 import ProcedurEmergency from "../components/emergency/ProcedurEmergency.jsx";
 
 

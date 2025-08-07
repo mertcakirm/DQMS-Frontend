@@ -1,4 +1,4 @@
-import Sidebar from "../components/other/sidebar.jsx";
+import Sidebar from "../components/other/Navbar.jsx";
 import { useEffect, useState } from "react";
 import {
   acceptRevisionRequest,

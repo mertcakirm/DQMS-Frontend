@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Sidebar from "../components/other/sidebar.jsx";
+import Sidebar from "../components/other/Navbar.jsx";
 import SwotComp from "../components/process/Swot.jsx";
 import PestleComp from "../components/process/Pestle.jsx";
 import NeedsAndExpectations from "../components/process/NeedsAndExpectations.jsx";

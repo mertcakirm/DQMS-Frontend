@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
-import Sidebar from "../components/other/sidebar.jsx";
+import Sidebar from "../components/other/Navbar.jsx";
 import MaintenancePlan from "../components/maintenance/MaintenancePlan.jsx";
 import MaintenanceProcedur from "../components/maintenance/MaintenanceProcedur.jsx";
 

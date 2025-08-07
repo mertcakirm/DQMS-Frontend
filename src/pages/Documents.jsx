@@ -4,7 +4,7 @@ import DocumentList from "../components/documents/DocumentList.jsx";
 import ArchiveDuration from "../components/documents/ArchiveDuration.jsx";
 import ExternalDocuments from "../components/documents/ExternalDocuments.jsx";
 import CreateDocuments from "../components/documents/CreateDocuments.jsx";
-import Sidebar from "../components/other/sidebar.jsx";
+import Sidebar from "../components/other/Navbar.jsx";
 import ProcedurDoc from "../components/documents/ProcedurDoc.jsx";
 import MyDocuments from "../components/documents/myDocuments.jsx";
 

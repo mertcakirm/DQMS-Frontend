@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import Sidebar from "../other/sidebar.jsx";
+import Sidebar from "../other/Navbar.jsx";
 import {
   getAllDocuments,
   getDocumentSharedToMe,

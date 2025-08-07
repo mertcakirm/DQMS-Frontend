@@ -1,4 +1,4 @@
-import Sidebar from "../components/other/sidebar.jsx";
+import Sidebar from "../components/other/Navbar.jsx";
 import { useState ,useEffect } from "react";
 import {getUsers} from "../API/User.js";
 import {createDocument} from "../API/Documents.js";

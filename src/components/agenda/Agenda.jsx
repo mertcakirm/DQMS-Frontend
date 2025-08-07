@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./agenda.css";
-import Sidebar from "../other/sidebar.jsx";
+import Sidebar from "../other/Navbar.jsx";
 import {
   createNewAgendaEvent,
   deleteAgendaEvent,

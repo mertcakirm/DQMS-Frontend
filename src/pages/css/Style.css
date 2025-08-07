@@ -1,7 +1,8 @@
 .content-container{
     position: absolute;
-    left: 20%;
-    width: 80%;
+    left: 0%;
+    width: 100%;
+    top:50px;
 }
 
 .smalltitle{
@@ -130,10 +131,3 @@ td{
     height: 80px !important;
 }
 
-@media only screen and (max-width: 1900px) {
-    .content-container{
-        position: absolute;
-        left: 25%;
-        width: 75%;
-    }
-}

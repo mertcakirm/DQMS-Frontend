@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Sidebar from "../components/other/sidebar.jsx";
+import Sidebar from "../components/other/Navbar.jsx";
 import ReviewManagement from "../components/review/ReviewManagement.jsx";
 import ReviewProcedur from "../components/review/ReviewProcedur.jsx";
 

@@ -4,7 +4,7 @@ import WasteTracking from "../components/environment/WasteTracking.jsx";
 import Directive1 from "../components/environment/Directive1.jsx";
 import Directive2 from "../components/environment/Directive2.jsx";
 
-import Sidebar from "../components/other/sidebar.jsx";
+import Sidebar from "../components/other/Navbar.jsx";
 import ProcedurEnvi from "../components/environment/ProcedurEnvi.jsx";
 
 

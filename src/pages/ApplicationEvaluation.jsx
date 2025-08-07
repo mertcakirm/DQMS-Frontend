@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Sidebar from "../components/other/sidebar.jsx";
+import Sidebar from "../components/other/Navbar.jsx";
 import ApplicationEvaluationForm from "../components/applicationevaluation/ApplicationEvaluationForm.jsx";
 import ApplicationEvaluationForm2 from "../components/applicationevaluation/ApplicationEvaluationForm2.jsx";
 import ProcedureEvaluation from "../components/applicationevaluation/ProcedureEvaluation.jsx";

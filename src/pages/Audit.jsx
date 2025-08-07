@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import AuditReport from '../components/auditplans/AuditReport.jsx';
 import AuditTable from '../components/auditplans/AuditTable.jsx';
 import ProcedurAudit from "../components/auditplans/procedurAudit.jsx";
-import Sidebar from "../components/other/sidebar.jsx";
+import Sidebar from "../components/other/Navbar.jsx";
 
 const steps = [
     { id: 1, path: "/ic-denetim/cizelge", component: <AuditTable /> },

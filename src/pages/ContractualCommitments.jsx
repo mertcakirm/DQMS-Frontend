@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Sidebar from "../components/other/sidebar.jsx";
+import Sidebar from "../components/other/Navbar.jsx";
 import Procedurcontract from "../components/contractualCommitments/Procedurcontract.jsx";
 import PersonalDataSecurityCommitment from "../components/contractualCommitments/PersonalDataSecurityCommitment.jsx";
 import TrackingChart from "../components/contractualCommitments/TrackingChart.jsx";

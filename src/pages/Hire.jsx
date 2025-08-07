@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Sidebar from "../components/other/sidebar.jsx";
+import Sidebar from "../components/other/Navbar.jsx";
 import Contract1 from "../components/hire/Contract1.jsx";
 import Contract2 from "../components/hire/Contract2.jsx";
 import Contract3 from "../components/hire/Contract3.jsx";

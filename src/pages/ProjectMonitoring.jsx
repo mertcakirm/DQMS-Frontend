@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Sidebar from "../components/other/sidebar.jsx";
+import Sidebar from "../components/other/Navbar.jsx";
 import MeetingMinutes from "../components/projectmonitoring/MeetingMinutes.jsx";
 import ProcedureMonitoring from "../components/projectmonitoring/ProcedureMonitoring.jsx";
 import MonitoringReport from "../components/projectmonitoring/MonitoringReport.jsx";

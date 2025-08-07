@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import Sidebar from "../components/other/sidebar.jsx";
+import Sidebar from "../components/other/Navbar.jsx";
 import { getTypeTitle, getTypeUrl } from "../Helpers/typeMapper.js";
 import { UserContext } from "../App.jsx";
 import { ActionPerm, checkPermFromRole } from "../API/permissions.js";

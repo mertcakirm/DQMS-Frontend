@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
-import Sidebar from "../components/other/sidebar.jsx";
+import Sidebar from "../components/other/Navbar.jsx";
 import Suitability from "../components/LegalAndOther/suitability.jsx";
 import LegalList from "../components/LegalAndOther/LegalList.jsx";
 import LegalProcedur from "../components/LegalAndOther/LegalProcedur.jsx";
