@@ -53,6 +53,7 @@ const Profile = () => {
                     const b64File = reader.result.split(",")[1];
                     await uploadUserPfp(b64File, fileExt);
                     setProfileImage(`data:image/${fileExt};base64,${b64File}`);
+                    toast.success("Profil resmi başarıyla güncellendi!")
                     sidebarData.refresher();
                 })();
             };

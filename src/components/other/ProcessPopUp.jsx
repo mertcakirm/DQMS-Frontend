@@ -6,6 +6,7 @@ import {deleteRole} from "../../API/Role.js";
 import {deleteManuelMail} from "../../API/Admin.js";
 import '../css/process.css'
 import {deleteDocument} from "../../API/Documents.js";
+import {deleteUnitById} from "../../API/Unit.js";
 
 const ProcessPopup = ({type, text, id, onClose,}) => {
 
@@ -31,6 +32,10 @@ const ProcessPopup = ({type, text, id, onClose,}) => {
                 case "delete_document":
                     await deleteDocument(id);
                     toast.success("Doküman başarıyla silindi!");
+                    break;
+                case "delete_unit":
+                    await deleteUnitById(id);
+                    toast.success("Birim başarıyla silindi!");
                     break;
 
                 default:

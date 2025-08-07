@@ -334,7 +334,7 @@ const ExternalDocuments = () => {
           {documents.length > 0 ? (
             documents.map((doc) => (
               <tr key={doc.id}>
-                <td>{doc.manuelId || "Belirtilmemiş"}</td>
+                <td>{doc.id || "Belirtilmemiş"}</td>
                 <td>{doc.title || "Belirtilmemiş"}</td>
                 <td>{doc.fields.nextreview.value || "Belirtilmemiş"}</td>
                 <td>{doc.fields.lastreview.value || "Belirtilmemiş"}</td>

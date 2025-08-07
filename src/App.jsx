@@ -239,6 +239,7 @@ const App = () => {
             <Route path="/onay-bekleyen-revizyonlar" element={<CompletedRevision />} />
 
             <Route path="/birim/yonet" element={<UnitsAndUsers />} />
+            <Route path="/birim/yonet/:id" element={<UnitsAndUsers />} />
             <Route path="/birim/analiz" element={<UnitsAndUsers />} />
             <Route path="/kullanici/yonet" element={<UnitsAndUsers />} />
             <Route path="/kullanici/analiz" element={<UnitsAndUsers />} />

@@ -389,7 +389,7 @@ const DocumentList = () => {
           {documents.length > 0 ? (
             documents.map((doc) => (
               <tr key={doc.id}>
-                <td>{doc.manuelId || "Belirtilmemiş"}</td>
+                <td>{doc.id || "Belirtilmemiş"}</td>
                 <td>{doc.title}</td>
                 <td>{getTypeTitle(doc.type)}</td>
                 <td>{new Date(doc.creationDate).toLocaleDateString()}</td>

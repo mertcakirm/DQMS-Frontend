@@ -1,7 +1,7 @@
 .navbar-container {
     width: 96%;
     height: 70px;
-    background: linear-gradient(#FFFFFF, #D2CBF5);
+    background: linear-gradient(#D2CBF5,#FFFFFF);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -168,13 +168,6 @@
     transition: .4s;
 
 }
-
-.cikis-yap-btn:hover{
-    transition: .4s;
-    text-indent: 10px;
-}
-
-
 
 @media only screen and (max-width:1900px){
     .sidebar-container{width: 25%}

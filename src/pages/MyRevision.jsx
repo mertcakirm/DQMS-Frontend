@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import {
   acceptRevisionRequest,
   getRevisionRequestsFromStatus,
-  getSelfRevisionRequests, getSelfRevisions,
-  rejectDocumentRevision,
+  getSelfRevisions,
   rejectRevisionRequest,
 } from "../API/DocumentRevision.js";
 import { getDocumentFromId } from "../API/Documents.js";
