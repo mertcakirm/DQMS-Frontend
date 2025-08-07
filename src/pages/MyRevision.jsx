@@ -8,6 +8,7 @@ import {
   rejectRevisionRequest,
 } from "../API/DocumentRevision.js";
 import { getDocumentFromId } from "../API/Documents.js";
+import {toast} from "react-toastify";
 
 const MyRevision = () => {
   const [revisionRequests, setRevisionRequests] = useState([]);
@@ -145,8 +146,10 @@ const MyRevision = () => {
                             style={{ columnGap: "10px" }}
                           >
                             <button
-                              onClick={() =>
+                              onClick={() =>{
                                 acceptRevisionRequest(rev.id, null)
+                                toast.success("Revizyon Talebi Onaylandı!")
+                              }
                               }
                               className="acceptbtn col-5"
                             >

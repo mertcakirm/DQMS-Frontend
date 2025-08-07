@@ -11,6 +11,7 @@ import {
   checkPermsFromRole,
 } from "../../API/permissions.js";
 import { SidebarDataContext, UserContext } from "../../App.jsx";
+import SidebarUnit from "../sidebarchild/SidebarUnit.jsx";
 
 const Sidebar = () => {
   const [profileImage, setProfileImage] = useState("");
@@ -255,9 +256,10 @@ const Sidebar = () => {
           </div>
         </div>
         <div className="sidebar-body">
-          <div className="accordion accordion-flush" id="accordionFlushExample">
+          <div className="accordion accordion-flush" id="accordionFlushExampleParent">
             <SidebarGeneral />
             <SidebarInstitutional />
+            <SidebarUnit />
           </div>
         </div>
       </div>
