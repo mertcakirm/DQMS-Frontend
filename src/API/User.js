@@ -31,6 +31,35 @@ export async function getUsers() {
   );
 }
 
+export async function getUsersinUnit(userIds) {
+    const queryString = userIds
+        .map((id) => `userIdArray=${encodeURIComponent(id)}`)
+        .join('&');
+
+    const url = getEndpoint(`/api/users/array?${queryString}`);
+
+    return _getJsonApiResult(
+        await fetch(url, {
+            method: "GET",
+            headers: {
+                Authorization: getAuthHeader(),
+                "Content-Type": "application/json",
+            },
+        })
+    );
+}
+
+export async function getUsersByUnitId(UnitId) {
+    return _getJsonApiResult(
+        await fetch(getEndpoint(`/api/users/units/${UnitId}`), {
+            method: "GET",
+            headers: {
+                Authorization: getAuthHeader(),
+            },
+        }),
+    );
+}
+
 export async function uploadUserPfp(b64, fileType) {
   return _getJsonApiResult(
     await fetch(getEndpoint(`/api/users/self/pfp`, { fileType: fileType }), {
@@ -54,6 +83,19 @@ export async function getUserPfp() {
     }),
   );
 }
+
+
+export async function getUsersPfp(uid) {
+    return _getJsonApiResult(
+        await fetch(getEndpoint(`/api/users/${uid}/pfp`), {
+            method: "GET",
+            headers: {
+                Authorization: getAuthHeader(),
+            },
+        }),
+    );
+}
+
 
 export async function changeUserPassword(oldPassword, newPassword) {
   return _getJsonApiResult(

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation} from "react-router-dom";
+import {matchPath, useLocation} from "react-router-dom";
 import Sidebar from "../components/other/Navbar.jsx";
 import ManageUnits from "../components/UnitAndUsers/ManageUnits.jsx";
 import AnalizeUnit from "../components/UnitAndUsers/AnalizeUnit.jsx";
@@ -13,20 +13,19 @@ const UnitsAndUsers = () => {
 
     const steps = [
         { id: 1, path: "/birim/yonet", component: <ManageUnits /> },
-        { id: 2, path: "/birim/analiz", component: <AnalizeUnit /> },
-        { id: 3, path: "/kullanici/yonet", component: <ManageUsers /> },
-        { id: 4, path: "/kullanici/analiz", component: <AnalizeUsers /> },
-        { id: 5, path: "/birim/yonet/:id", component: <UsersinUnit /> },
-
+        { id: 2, path: "/birim/yonet/:id", component: <UsersinUnit /> },
+        { id: 3, path: "/birim/analiz", component: <AnalizeUnit /> },
+        { id: 4, path: "/kullanici/yonet", component: <ManageUsers /> },
+        { id: 5, path: "/kullanici/analiz", component: <AnalizeUsers /> },
     ];
 
     useEffect(() => {
-        const matchedStep = steps.find((step) => step.path === location.pathname);
+        const matchedStep = steps.find((step) => matchPath({ path: step.path, end: true }, location.pathname));
         setCurrentStep(matchedStep ? matchedStep.id : 1);
     }, [location.pathname]);
 
     const renderCurrentStepComponent = () => {
-        const matchedStep = steps.find((step) => step.id === currentStep);
+        const matchedStep = steps.find((step) => matchPath({ path: step.path, end: true }, location.pathname));
         return matchedStep ? matchedStep.component : <div>Sayfa bulunamadı!</div>;
     };
 
