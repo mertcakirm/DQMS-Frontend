@@ -11,6 +11,7 @@ const AddRolePopup = ({onClose}) => {
     const addRole = async () => {
         if (newRole.perms === 0) return;
         await createRole(newRole.name, newRole.perms);
+        onClose(false);
         setNewRole({ name: "", perms: 0 });
     };
 

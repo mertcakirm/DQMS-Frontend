@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
   acceptRevisionRequest,
   getRevisionRequestsFromStatus,
-  getSelfRevisionRequests,
+  getSelfRevisionRequests, getSelfRevisions,
   rejectDocumentRevision,
   rejectRevisionRequest,
 } from "../API/DocumentRevision.js";
@@ -31,7 +31,7 @@ const MyRevision = () => {
       }),
     );
 
-    const selfdbRes = await getSelfRevisionRequests(1, 100);
+    const selfdbRes = await getSelfRevisions(1, 100);
     const selfResult = await Promise.all(
       selfdbRes.map(async (r) => {
         const documentResult = await getDocumentFromId(r.documentId, false);

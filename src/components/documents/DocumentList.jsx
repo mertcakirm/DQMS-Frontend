@@ -8,6 +8,7 @@ import {
   getTypeUrl,
 } from "../../Helpers/typeMapper.js";
 import ProcessPopup from "../other/ProcessPopUp.jsx";
+import Pagination from "../other/Pagination.jsx";
 
 const DocumentList = () => {
   const [documents, setDocuments] = useState([]);
@@ -436,20 +437,8 @@ const DocumentList = () => {
           )}
         </tbody>
       </table>
-      <div className="row px-3 col-12 justify-content-between">
-        <button
-          className="print-btn2 col-1"
-          onClick={() => setPageNum(pageNum - 1)}
-        >
-          önceki
-        </button>
-        <button
-          className="print-btn2 col-1"
-          onClick={() => setPageNum(pageNum + 1)}
-        >
-          sonraki
-        </button>
-      </div>
+      <Pagination setPageNum={setPageNum} pageNum={pageNum} />
+
       {isProcessPopupOpen && (
           <ProcessPopup
               onClose={(b) => {
