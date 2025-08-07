@@ -17,8 +17,8 @@ const SidebarUnit = () => {
                 </svg>
             ),
             links: [
-                {text: "Birimleri Yönet", href: "#"},
-                {text: "Birim İstatistikleri", href: "#"},
+                {text: "Birimleri Yönet", href: "/birim/yonet"},
+                {text: "Birim İstatistikleri", href: "birim/analiz"},
             ],
             indexun: 301
         },
@@ -39,8 +39,8 @@ const SidebarUnit = () => {
                 </svg>
             ),
             links: [
-                {text: "Kullanıcı Yönetimi", href: "#"},
-                {text: "Kullanıcı İstatistikleri", href: "#"},
+                {text: "Kullanıcı Yönetimi", href: "/kullanici/yonet"},
+                {text: "Kullanıcı İstatistikleri", href: "/kullanici/analiz"},
             ],
             indexun: 323
         },

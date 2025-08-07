@@ -34,6 +34,7 @@ import CompletedRevision from "./pages/CompletedRevision.jsx";
 import {ToastContainer} from "react-toastify";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import UnitsAndUsers from "./pages/UnitsAndUsers.jsx";
 
 export const UserContext = createContext();
 export const SidebarDataContext = createContext();
@@ -236,6 +237,11 @@ const App = () => {
             <Route path="/is-sagligi-ve-guvenligi/zimmet" element={<OccupationalHealthAndSafety />} />
             <Route path="/is-sagligi-ve-guvenligi/prosedur" element={<OccupationalHealthAndSafety />} />
             <Route path="/onay-bekleyen-revizyonlar" element={<CompletedRevision />} />
+
+            <Route path="/birim/yonet" element={<UnitsAndUsers />} />
+            <Route path="/birim/analiz" element={<UnitsAndUsers />} />
+            <Route path="/kullanici/yonet" element={<UnitsAndUsers />} />
+            <Route path="/kullanici/analiz" element={<UnitsAndUsers />} />
           </Route>
         </Routes>
       </BrowserRouter>
