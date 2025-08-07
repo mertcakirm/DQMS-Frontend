@@ -36,19 +36,18 @@ const Navbar = () => {
   return (
       <div className="navbar-container">
         {/* Sol taraf */}
-        <div className="navbar-left">
-          <a className="default-a" href="/anasayfa">
-            <img src={logo} alt="logo" width="110" />
-          </a>
-          <button className="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
-                  aria-controls="staticBackdrop">
+        <div className="navbar-left z-3">
+          <button className="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
             <svg width="32" height="32" clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m21 17.75c0-.414-.336-.75-.75-.75h-16.5c-.414 0-.75.336-.75.75s.336.75.75.75h16.5c.414 0 .75-.336.75-.75zm0-4c0-.414-.336-.75-.75-.75h-16.5c-.414 0-.75.336-.75.75s.336.75.75.75h16.5c.414 0 .75-.336.75-.75zm0-4c0-.414-.336-.75-.75-.75h-16.5c-.414 0-.75.336-.75.75s.336.75.75.75h16.5c.414 0 .75-.336.75-.75zm0-4c0-.414-.336-.75-.75-.75h-16.5c-.414 0-.75.336-.75.75s.336.75.75.75h16.5c.414 0 .75-.336.75-.75z" fillRule="nonzero"/></svg>
           </button>
-
         </div>
-
+        <div className="position-absolute z-1 d-flex w-100 justify-content-center">
+        <a className="default-a " href="/anasayfa">
+          <img src={logo} alt="logo" width="110" />
+        </a>
+        </div>
         {/* Sağ taraf */}
-        <div className="navbar-right">
+        <div className="navbar-right z-3">
           {checkPermsFromRole(user.roleValue, [
             ActionPerm.UserCreate,
             ActionPerm.RoleManage,
@@ -260,7 +259,16 @@ const Navbar = () => {
             <img src={profileImage} alt="Profil Resmi" />
           </a>
           <button className="cikis-yap-btn" onClick={LogOut}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M16 9v-4l8 7-8 7v-4h-8v-6h8zm-16-7v20h14v-2h-12v-16h12v-2h-14z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="url(#paint0_linear_106_44)" viewBox="0 0 24 24">
+              <path d="M16 9v-4l8 7-8 7v-4h-8v-6h8zm-16-7v20h14v-2h-12v-16h12v-2h-14z"/>
+              <defs>
+                <linearGradient id="paint0_linear_106_44" x1="12" y1="2" x2="12" y2="22"
+                                gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#17199F"/>
+                  <stop offset="1" stopColor="#D232AF"/>
+                </linearGradient>
+              </defs>
+            </svg>
           </button>
         </div>
         <Sidebar />

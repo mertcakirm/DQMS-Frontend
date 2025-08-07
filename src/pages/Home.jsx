@@ -83,8 +83,8 @@ const Home = () => {
         <div>
             <Sidebar/>
             <div className="content-container header-bg p-5">
-                <div className="row justify-content-center column-gap-3" data-aos="fade-up">
-                    <div className="col-12 row">
+                <div className="row justify-content-center column-gap-3 pb-5" data-aos="fade-up">
+                    <div className="col-12  row">
                         <div className="col-3">
                             <div className="dashboard-card  p-3">
                                 <p className="dashboard-card-title col-12 text-center">

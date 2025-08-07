@@ -20,8 +20,12 @@ import { ActionPerm, checkPermFromRole } from "../../API/permissions.js";
 import UnauthPnl from "../other/unauthPnl.jsx";
 import UnauthPage from "../other/UnauthPage.jsx";
 const CorrectiveActionForm = () => {
-  const [immediateCorrections, setImmediateCorrections] = useState([]);
-  const [correctiveActions, setCorrectiveActions] = useState([]);
+  const [immediateCorrections, setImmediateCorrections] = useState([
+    { id: Date.now(), name: "", deadline: "" },
+  ]);
+  const [correctiveActions, setCorrectiveActions] = useState([
+    { id: Date.now(), name: "", deadline: "" },
+  ]);
   const [activityTracking, setActivityTracking] = useState([]);
   const [title, setTitle] = useState("");
   const [unit, setUnit] = useState("");

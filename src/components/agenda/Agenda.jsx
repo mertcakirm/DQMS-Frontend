@@ -162,7 +162,7 @@ function Agenda() {
           className="row justify-content-between align-items-center"
           style={{ height: "100vh" }}
         >
-          <h3 className="col-12 large-title">AJANDA</h3>
+          <h3 className="col-12 large-title mt-5">AJANDA</h3>
           <div className="agenda-container">
             <div className="selectors">
               <div className="year-selector">
