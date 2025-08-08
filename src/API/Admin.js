@@ -45,3 +45,16 @@ export async function getDashboard() {
     }),
   );
 }
+
+
+
+export async function changeRoleReq(uid, newRoleId) {
+    return _getJsonApiResult(
+        await fetch(getEndpoint(`/api/role/change/${uid}?newRoleId=${newRoleId}`), {
+            method: "PATCH",
+            headers: {
+                Authorization: getAuthHeader(),
+            },
+        }),
+    );
+}

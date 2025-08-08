@@ -11,7 +11,7 @@ const getNowLocalDateTime = () => {
     const now = new Date();
     const offset = now.getTimezoneOffset();
     const localDate = new Date(now.getTime() - offset * 60000);
-    return localDate.toISOString().slice(0, 16); // "YYYY-MM-DDTHH:MM"
+    return localDate.toISOString().slice(0, 16);
 };
 
 const SendMailPopup = ({onClose}) => {
@@ -27,13 +27,20 @@ const SendMailPopup = ({onClose}) => {
     });
     const sendManuelMailButtonClicked = () => {
         (async () => {
-            const obj = manuelMailData;
-            if (obj.date != null) obj.date = localToUTC(new Date(obj.date));
-            const id = await sendManuelMail(obj);
-            if (isMailPlanned)
-            {
-                setManuelMails([...manuelMails, {...obj, data: "U", id: id}]);
+            const obj = { ...manuelMailData };
+
+            if (isMailPlanned) {
+                obj.date = localToUTC(new Date(obj.date));
+            } else {
+                delete obj.date; // sunucuya tarih gönderme
             }
+
+            const id = await sendManuelMail(obj);
+
+            if (isMailPlanned) {
+                setManuelMails([...manuelMails, { ...obj, data: "U", id }]);
+            }
+
             toast.success("Mail Gönderildi!");
             onClose(false);
         })();
@@ -141,7 +148,7 @@ const SendMailPopup = ({onClose}) => {
                             </>
                         )}
                         <button
-                            className="print-btn2 col-12"
+                            className="print-btn2 mb-3 col-12"
                             onClick={sendManuelMailButtonClicked}
                         >
                             Gönder
