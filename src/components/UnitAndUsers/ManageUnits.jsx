@@ -10,6 +10,7 @@ import AddUnitPopup from "./AddUnitPopup.jsx";
 const ManageUnits = () => {
     const user = useContext(UserContext);
     const [units, setUnits] = useState([]);
+    const navigate = useNavigate();
     const [reflesh, setReflesh] = useState(false);
     const [permissionCheck, setPermissionCheck] = useState(false);
     const [AddUnitPopupOpen, setAddUnitPopupOpen] = useState(false);
@@ -20,7 +21,6 @@ const ManageUnits = () => {
         id: null,
     });
 
-    const navigate = useNavigate();
 
     const toggleProcessPopup = (type, id, text) => {
         setProcessIsPopupOpen(!isProcessPopupOpen);

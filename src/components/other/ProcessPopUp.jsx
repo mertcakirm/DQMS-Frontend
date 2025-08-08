@@ -6,9 +6,19 @@ import {deleteRole} from "../../API/Role.js";
 import {deleteManuelMail} from "../../API/Admin.js";
 import '../css/process.css'
 import {deleteDocument} from "../../API/Documents.js";
-import {deleteUnitById} from "../../API/Unit.js";
+import {deleteUnitById, deleteUserInUnit} from "../../API/Unit.js";
+import {useLocation} from "react-router-dom";
+import {useEffect, useState} from "react";
 
 const ProcessPopup = ({type, text, id, onClose,}) => {
+    const location = useLocation();
+    const [unitId, setUnitId] = useState(null);
+
+    useEffect(() => {
+        const pathParts = location.pathname.split('/');
+        const lastSegment = pathParts[pathParts.length - 1];
+        setUnitId(lastSegment);
+    }, [location.pathname]);
 
     const HandleSubmit = async () => {
         try {
@@ -36,6 +46,10 @@ const ProcessPopup = ({type, text, id, onClose,}) => {
                 case "delete_unit":
                     await deleteUnitById(id);
                     toast.success("Birim başarıyla silindi!");
+                    break;
+                case "delete_unit_user":
+                    await deleteUserInUnit(id,unitId);
+                    toast.success("Kullanıcı birimden başarıyla silindi!");
                     break;
 
                 default:

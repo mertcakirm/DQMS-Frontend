@@ -44,3 +44,27 @@ export async function createUnitRequest(unit) {
         }),
     );
 }
+
+
+export async function AddUserInUnitReq(uId, unitId) {
+    return _getJsonApiResult(
+        await fetch(getEndpoint(`/api/users/${uId}/units/${unitId}`), {
+            method: "POST",
+            headers: {
+                Authorization: getAuthHeader(),
+                "Content-Type": "application/json",
+            },
+        }),
+    );
+}
+
+export async function deleteUserInUnit(uId, unitId) {
+    return _getJsonApiResult(
+        await fetch(getEndpoint(`/api/users/${uId}/units/${unitId}`), {
+            method: "DELETE",
+            headers: {
+                Authorization: getAuthHeader(),
+            },
+        }),
+    );
+}
