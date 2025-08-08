@@ -2,6 +2,7 @@ import {changeUser} from "../../API/User.js";
 import {useEffect, useState} from "react";
 import {getAllRoles} from "../../API/Role.js";
 import {changeRoleReq} from "../../API/Admin.js";
+import {toast} from "react-toastify";
 
 const UpdateUserRolePopup = ({onClose, selectedUserId}) => {
     const [roles, setRoles] = useState([]);
@@ -26,8 +27,10 @@ const UpdateUserRolePopup = ({onClose, selectedUserId}) => {
         try {
             await changeRoleReq(selectedUserId,newRoleId);
             onClose(false);
+            toast.success("Rol Güncellendi!");
         } catch (error) {
             console.log(error);
+            toast.error("Hata! Rol Güncellenemedi!")
         }
     };
 

@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Sidebar from "../components/other/Navbar.jsx";
 import {getAllRoles} from "../API/Role.js";
 import {getUsers} from "../API/User.js";
@@ -21,6 +21,7 @@ import AddRolePopup from "../components/other/AddRolePopup.jsx";
 import AddUserPopup from "../components/other/AddUserPopup.jsx";
 import SendMailPopup from "../components/other/SendMailPopup.jsx";
 import ProcessPopup from "../components/other/ProcessPopUp.jsx";
+import UnauthPage from "../components/other/UnauthPage.jsx";
 
 const AdminPanel = () => {
     const user = useContext(UserContext);

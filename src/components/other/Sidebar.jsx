@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import logo from "../../assets/logo1.png";
 import SidebarGeneral from "../sidebarchild/sidebar-general.jsx";
 import SidebarInstitutional from "../sidebarchild/sidebar-institutional.jsx";
 import SidebarUnit from "../sidebarchild/SidebarUnit.jsx";
+import {ActionPerm, checkPermsFromRole} from "../../API/permissions.js";
+import {UserContext} from "../../App.jsx";
 
 const Sidebar = () => {
+    const user = useContext(UserContext);
+
     return (
-
-
     <div className="offcanvas offcanvas-start sidebar-container" data-bs-backdrop="static" tabIndex="-1" id="staticBackdrop"
          aria-labelledby="staticBackdropLabel">
         <div className="offcanvas-header py-0 px-3">
@@ -21,7 +23,14 @@ const Sidebar = () => {
                 <div className="accordion accordion-flush" id="accordionFlushExampleParent">
                     <SidebarGeneral />
                     <SidebarInstitutional />
+                    {checkPermsFromRole(user.roleValue, [
+                        ActionPerm.UserCreate,
+                        ActionPerm.RoleManage,
+                        ActionPerm.UserModify,
+                    ]) && (
                     <SidebarUnit />
+                    )}
+
                 </div>
             </div>
         </div>

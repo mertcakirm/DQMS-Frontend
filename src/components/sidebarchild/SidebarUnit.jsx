@@ -18,7 +18,7 @@ const SidebarUnit = () => {
             ),
             links: [
                 {text: "Birimleri Yönet", href: "/birim/yonet"},
-                {text: "Birim İstatistikleri", href: "birim/analiz"},
+                //{text: "Birim İstatistikleri", href: "birim/analiz"},
             ],
             indexun: 301
         },
@@ -40,7 +40,7 @@ const SidebarUnit = () => {
             ),
             links: [
                 {text: "Kullanıcı Yönetimi", href: "/kullanici/yonet"},
-                {text: "Kullanıcı İstatistikleri", href: "/kullanici/analiz"},
+                //text: "Kullanıcı İstatistikleri", href: "/kullanici/analiz"},
             ],
             indexun: 323
         },
