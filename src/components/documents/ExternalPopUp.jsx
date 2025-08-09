@@ -108,7 +108,7 @@ const ExternalPopUp = ({ mode, id, popupCloser }) => {
     if (isRejected)
       rejectDocumentRevision(data.revision.documentId, data.revision.id, null);
     else acceptDocumentRevision(data.revision.documentId, data.revision.id);
-    window.location.href="/onay-bekleyen-revizyonlar";
+    window.location.href="/dokuman/listesi";
     
   };
   useEffect(() => {

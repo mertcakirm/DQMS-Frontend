@@ -74,7 +74,7 @@ const AdminPanel = () => {
     }, [refleshData]);
 
     return (
-        <div>
+        <div className="document-parent">
             <Sidebar/>
             <div className="content-container p-5">
                 <div className="row justify-content-between" data-aos="fade-up">

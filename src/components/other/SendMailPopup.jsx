@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import '../css/process.css';
+import './css/process.css';
 import {ActionPerm, checkPermFromRole} from "../../API/permissions.js";
 import UnauthPnl from "./unauthPnl.jsx";
 import {localToUTC} from "../../Helpers/dateTimeHelpers.js";

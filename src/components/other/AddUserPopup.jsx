@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {createNewUser} from "../../API/User.js";
 import {getAllRoles} from "../../API/Role.js";
-import '../css/process.css';
+import './css/process.css';
 
 const AddUserPopup = ({onClose}) => {
     const [newUser, setNewUser] = useState({

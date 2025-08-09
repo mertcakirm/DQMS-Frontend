@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import { optionsList } from "../../Helpers/units.js";
+import { optionsList } from "../../Helpers/unitsHelper.js";
 import {
   changeDocument,
   createDocument,
@@ -17,6 +17,8 @@ import {
 import {UserContext} from "../../App.jsx";
 import {ActionPerm, checkPermFromRole} from "../../API/permissions.js";
 import UnauthPage from "../other/UnauthPage.jsx";
+import {handleRevisionResult} from "../general/loadDocumentData.js";
+import DocumentInfoCard from "../general/DocumentInfoCard.jsx";
 
 const Contract2 = () => {
   const [title, setTitle] = useState("");
@@ -79,59 +81,12 @@ const Contract2 = () => {
   };
 
   const onRevisionResult = (isRejected) => {
-    if (isRejected)
-      rejectDocumentRevision(data.revision.documentId, data.revision.id, null);
-    else acceptDocumentRevision(data.revision.documentId, data.revision.id);
-    window.location.href = "/onay-bekleyen-revizyonlar";
+    handleRevisionResult({
+      data,
+      isRejected,
+      redirectUrl: "/onay-bekleyen-revizyonlar"
+    });
   };
-
-  if (mode !== DMode.Create) {
-    const getId = queryParameters.get("id");
-
-    if (!!!getId) return;
-
-    useEffect(() => {
-      (async () => {
-        let doc = await (mode === DMode.ViewRevision
-          ? getRevision(getId)
-          : getDocumentFromId(getId, true));
-
-        if (mode !== DMode.ViewRevision)
-          doc = {
-            ...doc.document,
-            attachments: doc.attachments,
-            fields: doc.fields,
-          };
-        else {
-          const _tempDoc = await getDocumentFromId(
-            doc.revision.documentId,
-            false,
-          );
-          doc = {
-            ..._tempDoc.document,
-            attachments: _tempDoc.attachments,
-            fields: doc.fields,
-            revision: doc.revision,
-          };
-        }
-        if (!!!doc) return;
-
-        setData(doc);
-
-        setTitle(doc.title);
-        setUnit(doc.department);
-        setManuelId(doc.manuelId);
-
-        setState(JSON.parse(doc.fields["taraflar-ve-ofisler"].value));
-
-        const elements = document.querySelectorAll("[field-short-name]");
-        elements.forEach((element) => {
-          const fieldShortName = element.getAttribute("field-short-name");
-          element.value = doc.fields[fieldShortName].value;
-        });
-      })();
-    }, []);
-  }
   return (
     <div className="container-fluid p-5">
       <div className="row justify-content-between">
@@ -184,94 +139,15 @@ const Contract2 = () => {
       </div>
       <div className="row mt-5">
         <div className="col-4">
-          <div className="card" style={{ position: "sticky", top: "100px" }}>
-            <div className="card-header create-doc-card-header">
-              Doküman Bilgileri
-            </div>
-            <div className="card-body justify-content-center row">
-              <div
-                className="row mb-3 justify-content-center col-12 pb-3"
-                style={{ borderBottom: "1px solid #ccc" }}
-              >
-                <label className="col-12 create-doc-p mb-3">
-                  Doküman Başlığı
-                </label>
-                <input
-                  className="col-12 create-doc-inp"
-                  name="doctitle"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  type="text"
-                />
-              </div>
-              <div
-                className="row mb-3 justify-content-center col-12 pb-3"
-                style={{ borderBottom: "1px solid #ccc" }}
-              >
-                <label className="col-12 create-doc-p mb-3">Döküman No</label>
-                <input
-                  className="col-12 create-doc-inp"
-                  value={manuelId}
-                  onChange={(e) => setManuelId(e.target.value)}
-                  type="text"
-                />
-              </div>
-              <div
-                className="row mb-3 justify-content-center col-12 pb-3"
-                style={{ borderBottom: "1px solid #ccc" }}
-              >
-                <label className="col-12 create-doc-p mb-3">
-                  İlk Yayın Tarihi
-                </label>
-                <input
-                  className="col-12 create-doc-inp"
-                  type="date"
-                  field-short-name="p1"
-                />
-              </div>
-              <div
-                className="row mb-3 justify-content-center col-12 pb-3"
-                style={{ borderBottom: "1px solid #ccc" }}
-              >
-                <label className="col-12 create-doc-p mb-3">
-                  Yürürlük Tarihi
-                </label>
-                <input
-                  className="col-12 create-doc-inp"
-                  type="date"
-                  field-short-name="p2"
-                />
-              </div>
-              <div
-                className="row mb-3 justify-content-center col-12 pb-3"
-                style={{ borderBottom: "1px solid #ccc" }}
-              >
-                <label className="col-12 create-doc-p mb-3">Sayfa No</label>
-                <input
-                  className="col-12 create-doc-inp"
-                  type="number"
-                  field-short-name="p3"
-                />
-              </div>
-
-              <div className="row mb-3 justify-content-center col-12 pb-3">
-                <label className="col-12 create-doc-p mb-3">
-                  Sorumlu Birim
-                </label>
-                <select
-                  value={filteredValue}
-                  onChange={(e) => setUnit(e.target.value)}
-                  className="create-doc-inp"
-                >
-                  {optionsList.map((option, index) => (
-                    <option key={index} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
+          <DocumentInfoCard
+              title={title}
+              setTitle={setTitle}
+              manuelId={manuelId}
+              setManuelId={setManuelId}
+              unit={unit}
+              setUnit={setUnit}
+              filteredValue={filteredValue}
+          />
         </div>
         <div className="col-8">
           <div className="card" style={{ position: "sticky", top: "100px" }}>

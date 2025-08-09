@@ -13,7 +13,7 @@ import {
   getRevision,
   rejectDocumentRevision,
 } from "../../API/DocumentRevision.js";
-import { optionsList } from "../../Helpers/units.js";
+import { optionsList } from "../../Helpers/unitsHelper.js";
 import {UserContext} from "../../App.jsx";
 import {ActionPerm, checkPermFromRole} from "../../API/permissions.js";
 import UnauthPage from "../other/UnauthPage.jsx";

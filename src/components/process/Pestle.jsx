@@ -7,7 +7,7 @@ import {
   getDocumentFromId,
 } from "../../API/Documents.js";
 import { DocumentType } from "../../Helpers/typeMapper.js";
-import { optionsList } from "../../Helpers/units.js";
+import { optionsList } from "../../Helpers/unitsHelper.js";
 import {
   acceptDocumentRevision,
   createDocumentRevision,

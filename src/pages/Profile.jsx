@@ -95,7 +95,7 @@ const Profile = () => {
     };
 
     return (
-        <div>
+        <div className="document-parent">
             <Sidebar/>
             <div className="content-container p-5" data-aos="fade-up">
                 <div className="row justify-content-between">

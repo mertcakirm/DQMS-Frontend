@@ -5,7 +5,7 @@ import {
 } from "../../API/Documents.js";
 import { DocumentType } from "../../Helpers/typeMapper.js";
 import React, { useEffect, useState } from "react";
-import { optionsList } from "../../Helpers/units.js";
+import { optionsList } from "../../Helpers/unitsHelper.js";
 import { DMode } from "../../Helpers/DMode.js";
 import {
   acceptDocumentRevision,

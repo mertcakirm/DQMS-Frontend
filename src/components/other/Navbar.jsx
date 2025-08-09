@@ -7,7 +7,7 @@ import {
   checkPermsFromRole,
 } from "../../API/permissions.js";
 import { SidebarDataContext, UserContext } from "../../App.jsx";
-import '../css/navbar.css';
+import './css/navbar.css';
 import Sidebar from "./Sidebar.jsx";
 
 const Navbar = () => {

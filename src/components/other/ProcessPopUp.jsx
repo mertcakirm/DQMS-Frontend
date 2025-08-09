@@ -1,10 +1,10 @@
-import '/src/components/css/process.css';
+import '/src/components/other/css/process.css';
 import "aos/dist/aos.css";
 import {toast} from 'react-toastify';
 import {deleteUser} from "../../API/User.js";
 import {deleteRole} from "../../API/Role.js";
 import {deleteManuelMail} from "../../API/Admin.js";
-import '../css/process.css'
+import './css/process.css'
 import {deleteDocument} from "../../API/Documents.js";
 import {deleteUnitById, deleteUserInUnit} from "../../API/Unit.js";
 import {useLocation} from "react-router-dom";

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {ActionPerm, getPermTitle} from "../../API/permissions.js";
 import {createRole} from "../../API/Role.js";
-import '../css/process.css';
+import './css/process.css';
 
 const AddRolePopup = ({onClose}) => {
     const [newRole, setNewRole] = useState({

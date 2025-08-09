@@ -8,7 +8,7 @@ import {
     getRevision,
     rejectDocumentRevision
 } from "../../API/DocumentRevision.js";
-import {optionsList} from "../../Helpers/units.js";
+import {optionsList} from "../../Helpers/unitsHelper.js";
 
 const NeedsPopup = ({ mode, id, popupCloser }) => {
     const [unit, setUnit] = useState("");

@@ -4,7 +4,7 @@ import {changeDocument, createDocument, getDocumentFromId} from "../../API/Docum
 import {UserContext} from "../../App.jsx";
 import {ActionPerm, checkPermFromRole} from "../../API/permissions.js";
 import {DocumentType} from "../../Helpers/typeMapper.js";
-import {optionsList} from "../../Helpers/units.js";
+import {optionsList} from "../../Helpers/unitsHelper.js";
 import {
     acceptDocumentRevision,
     createDocumentRevision,

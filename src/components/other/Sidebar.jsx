@@ -22,7 +22,14 @@ const Sidebar = () => {
             <div className="sidebar-body">
                 <div className="accordion accordion-flush" id="accordionFlushExampleParent">
                     <SidebarGeneral />
-                    <SidebarInstitutional />
+
+                    {checkPermsFromRole(user.roleValue, [
+                        ActionPerm.DocumentRevisionCreate,
+                    ]) && (
+                        <SidebarInstitutional />
+                    )}
+
+
                     {checkPermsFromRole(user.roleValue, [
                         ActionPerm.UserCreate,
                         ActionPerm.RoleManage,

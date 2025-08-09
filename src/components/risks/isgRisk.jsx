@@ -3,7 +3,7 @@ import React, {useContext, useEffect, useState} from "react";
 import {changeDocument, createDocument, getDocumentFromId} from "../../API/Documents.js";
 import {UserContext} from "../../App.jsx";
 import {DocumentType} from "../../Helpers/typeMapper.js";
-import {optionsList} from "../../Helpers/units.js";
+import {optionsList} from "../../Helpers/unitsHelper.js";
 import {useSearchParams} from "react-router-dom";
 import {
     acceptDocumentRevision,

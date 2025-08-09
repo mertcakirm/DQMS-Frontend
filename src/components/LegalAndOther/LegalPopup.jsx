@@ -2,7 +2,7 @@ import './popup.css'
 import React, {useEffect, useState} from "react";
 import {changeDocument, createDocument, getDocumentFromId} from "../../API/Documents.js";
 import {DocumentType} from "../../Helpers/typeMapper.js";
-import {optionsList} from "../../Helpers/units.js";
+import {optionsList} from "../../Helpers/unitsHelper.js";
 import {DMode} from "../../Helpers/DMode.js";
 import {
     acceptDocumentRevision,

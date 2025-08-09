@@ -5,10 +5,6 @@ import { getAllDocuments } from "../../API/Documents.js";
 import ExternalPopUp from "./ExternalPopUp.jsx";
 import { DocumentType } from "../../Helpers/typeMapper.js";
 import { useSearchParams } from "react-router-dom";
-import {
-  acceptDocumentRevision,
-  rejectDocumentRevision,
-} from "../../API/DocumentRevision.js";
 import UnauthPage from "../other/UnauthPage.jsx";
 
 const ExternalDocuments = () => {
@@ -22,6 +18,7 @@ const ExternalDocuments = () => {
   const user = useContext(UserContext);
   if (!checkPermFromRole(user.roleValue, ActionPerm.DocumentViewAll))
     return <UnauthPage />;
+
   const handlePrint = () => {
     const elements = document.querySelectorAll("[field-short-name]");
     const documentFields = {};
