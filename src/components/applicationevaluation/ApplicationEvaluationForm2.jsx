@@ -17,6 +17,7 @@ import {
 import {UserContext} from "../../App.jsx";
 import {ActionPerm, checkPermFromRole} from "../../API/permissions.js";
 import UnauthPage from "../other/UnauthPage.jsx";
+import {handleRevisionResult, loadDocumentData} from "../general/loadDocumentData.js";
 
 const ApplicationEvaluationForm2 = () => {
   const [title, setTitle] = useState("");
@@ -36,16 +37,18 @@ const ApplicationEvaluationForm2 = () => {
     ],
   });
   const [tableData, setTableData] = useState(
-    Array.from({ length: 5 }, () => Array(7).fill("")),
+      Array.from({ length: 5 }, () => Array(7).fill(""))
   );
 
   const [selectedRow, setSelectedRow] = useState("");
   const [selectedColumn, setSelectedColumn] = useState("");
   const [selectedScore, setSelectedScore] = useState("");
+  const [data, setData] = useState(null);
 
   const user = useContext(UserContext);
   if (!checkPermFromRole(user.roleValue, ActionPerm.DocumentViewAll))
     return <UnauthPage />;
+
   const calculateColumnTotals = () => {
     const totals = Array(7).fill(0);
     tableData.forEach((row) => {
@@ -58,11 +61,13 @@ const ApplicationEvaluationForm2 = () => {
     });
     return totals;
   };
+
   const handleInputChangejoinperson = (index, newValue) => {
     const updatedJoinPerson = [...state.JoinPerson];
     updatedJoinPerson[index].value = newValue;
     setState({ ...state, JoinPerson: updatedJoinPerson });
   };
+
   const handleAddScore = () => {
     if (selectedRow && selectedColumn && selectedScore) {
       const rowIndex = parseInt(selectedRow) - 1;
@@ -75,12 +80,14 @@ const ApplicationEvaluationForm2 = () => {
   };
 
   const columnTotals = calculateColumnTotals();
+
   const handleInputChange = (index, field, value) => {
     const updatedRows = state.row.map((row, i) =>
-      i === index ? { ...row, [field]: value } : row,
+        i === index ? { ...row, [field]: value } : row
     );
     setState({ row: updatedRows });
   };
+
   const addNewRow = () => {
     setState((prevState) => ({
       ...prevState,
@@ -92,8 +99,8 @@ const ApplicationEvaluationForm2 = () => {
   };
 
   const [queryParameters] = useSearchParams();
-  const [data, setData] = useState(null);
   const mode = queryParameters.get("mode") ?? DMode.Create;
+
   const handleSubmit = () => {
     (async () => {
       const elements = document.querySelectorAll("[field-short-name]");
@@ -103,8 +110,9 @@ const ApplicationEvaluationForm2 = () => {
 
       elements.forEach((element) => {
         documentFields[element.getAttribute("field-short-name")] =
-          element.value;
+            element.value;
       });
+
       if (mode === DMode.Create) {
         await createDocument({
           title: title,
@@ -125,60 +133,25 @@ const ApplicationEvaluationForm2 = () => {
   };
 
   const onRevisionResult = (isRejected) => {
-    if (isRejected)
-      rejectDocumentRevision(data.revision.documentId, data.revision.id, null);
-    else acceptDocumentRevision(data.revision.documentId, data.revision.id);
-    window.location.href = "/onay-bekleyen-revizyonlar";
+    handleRevisionResult({
+      data,
+      isRejected,
+      redirectUrl: "/onay-bekleyen-revizyonlar",
+    });
   };
 
-  if (mode !== DMode.Create) {
-    const getId = queryParameters.get("id");
-
-    if (!!!getId) return;
-
-    useEffect(() => {
-      (async () => {
-        let doc = await (mode === DMode.ViewRevision
-          ? getRevision(getId)
-          : getDocumentFromId(getId, true));
-
-        if (mode !== DMode.ViewRevision)
-          doc = {
-            ...doc.document,
-            attachments: doc.attachments,
-            fields: doc.fields,
-          };
-        else {
-          const _tempDoc = await getDocumentFromId(
-            doc.revision.documentId,
-            false,
-          );
-          doc = {
-            ..._tempDoc.document,
-            attachments: _tempDoc.attachments,
-            fields: doc.fields,
-            revision: doc.revision,
-          };
-        }
-        if (!!!doc) return;
-
-        setData(doc);
-
-        setTitle(doc.title);
-        setUnit(doc.department);
-        setManuelId(doc.manuelId);
-
+  useEffect(() => {
+    loadDocumentData({
+      mode,
+      id: queryParameters.get("id"),
+      setters: { setData, setTitle, setUnit, setManuelId },
+      onAfterLoad: (doc) => {
         setState(JSON.parse(doc.fields["points"].value));
         setTableData(JSON.parse(doc.fields["table_data"].value));
+      },
+    });
+  }, []);
 
-        const elements = document.querySelectorAll("[field-short-name]");
-        elements.forEach((element) => {
-          const fieldShortName = element.getAttribute("field-short-name");
-          element.value = doc.fields[fieldShortName].value;
-        });
-      })();
-    }, []);
-  }
   return (
     <div className="container-fluid p-5">
       <div className="row justify-content-between">

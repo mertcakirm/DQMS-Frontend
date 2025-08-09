@@ -296,7 +296,7 @@ const DocumentList = () => {
 
   useEffect(() => {
     fetchDocuments();
-  }, [pageNum, search]);
+  }, [pageNum, search,reflesh]);
 
   const [searchTimeout, setSearchTimeout] = useState(null);
   const searchTextChanged = (searchStr) => {
