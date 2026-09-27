@@ -1,4 +1,4 @@
-import Sidebar from "../components/other/Navbar.jsx";
+import Sidebar from "../components/other/Sidebar.jsx";
 import "./css/switch.css";
 import {useContext, useEffect, useState} from "react";
 import {

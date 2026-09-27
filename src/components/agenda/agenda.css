@@ -1,200 +1,296 @@
+/* Ajanda Ana Konteyner */
 .agenda-container {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    height: 80%;
+    padding: 24px;
+    background: #18181b; /* Koyu premium arkaplan */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    height: 80vh;
     overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: #e4e4e7;
 }
 
-.selectors
-{
+.agenda-container::-webkit-scrollbar { width: 6px; }
+.agenda-container::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 10px; }
+
+/* Seçici Alanlar (Yıl / Ay) */
+.selectors {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.month-selector {
-    display: flex;
-    justify-content: center;
-}
-
-.year-selector {
-    display: flex;
-    justify-content: center;
+    gap: 15px;
+    margin-bottom: 24px;
 }
 
 .month-selector select, .year-selector select {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 10px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #27272a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color-scheme: dark;
 }
 
+.month-selector select:hover, .year-selector select:hover {
+    border-color: rgba(138, 99, 247, 0.5);
+    background: #2a2a30;
+}
+
+/* Takvim Tablosu */
 .calendar-table {
     width: 100%;
     border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.calendar-table th, .calendar-table td{
-    border: 1px solid #ddd!important;
-    text-align: center!important;
-    padding: 10px!important;
-    background: transparent!important;
+.calendar-table th, .calendar-table td {
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    text-align: center !important;
+    padding: 0 !important;
+    background: transparent !important;
 }
 
 .calendar-table th {
-    color: #555;
-    background: rgb(190,86,224);
-    background: linear-gradient(130deg, rgba(208, 145, 228, 0.3) 0%, rgba(145, 65, 220, 0.3) 87%)!important;
+    color: #e4e4e7;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 16px 10px !important;
+    background: rgba(138, 99, 247, 0.1) !important; /* Hafif mor başlık */
+    border-bottom: 1px solid rgba(138, 99, 247, 0.2) !important;
 }
 
+/* Takvim Hücreleri (Günler) */
 .calendar-day {
-    min-height: 80px;
+    min-height: 100px;
     max-height: 150px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    padding: 10px;
+    transition: background 0.3s ease;
 }
 
-.calendar-day span {
-    font-weight: bold;
-    margin-bottom: 5px;
+.calendar-day:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.calendar-day::-webkit-scrollbar { width: 4px; }
+.calendar-day::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 10px; }
+
+/* Gün Numarası */
+.calendar-day-number {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #a1a1aa;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+/* Bugün Vurgusu */
+.calendar-day-number.today-highlight {
+    background: linear-gradient(135deg, #8a63f7 0%, #e85bc5 100%);
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(138, 99, 247, 0.6);
 }
 
 .calendar-day ul {
     list-style: none;
-    padding-left: 0px!important;
+    padding-left: 0px !important;
+    width: 100%;
+    margin: 0;
 }
 
+/* Etkinlik Öğeleri */
 .event-item {
     font-size: 12px;
-    color: white;
-    padding: 4px 6px;
-    border-radius: 4px;
-    margin-bottom: 4px;
+    font-weight: 500;
+    color: #ffffff;
+    padding: 6px 8px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.event-item:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+}
+
+/* Popup (Glassmorphism & Koyu Tema) */
+.popup-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px); /* Arkaplanı bulanıklaştırır */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
 }
 
 .popup {
-    background-color: #fff;
-    padding: 35px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    max-width: 430px;
-    width: 100%;
+    background-color: #18181b;
+    padding: 32px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    max-width: 450px;
+    width: 90%;
+    color: #e4e4e7;
 }
 
 .popup h2 {
     margin-top: 0;
     margin-bottom: 15px;
-    font-size: 20px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
 }
 
 .popup .divider {
-    background-color: #ccc;
+    background-color: rgba(255, 255, 255, 0.1);
     height: 1px;
-    border-radius: 1px;
     width: 100%;
-    margin-bottom: 20px;
-}
-.popup input, .popup textarea, .popup select  {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
+    margin-bottom: 24px;
 }
 
+/* Form Elemanları (Input, Textarea) */
+.popup input[type="text"], .popup input[type="time"], .popup textarea {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    background: #27272a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-size: 14px;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    color-scheme: dark;
+}
+
+.popup input[type="text"]:focus, .popup input[type="time"]:focus, .popup textarea:focus {
+    outline: none;
+    border-color: #8a63f7;
+    box-shadow: 0 0 0 3px rgba(138, 99, 247, 0.2);
+}
+
+/* Renk Seçici */
 .popup .color-selector {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 12px;
     justify-content: start;
-    margin-bottom: 14px;
-}
-
-.popup .color-selector input {
-    display: none;
-}
-
-.popup .color-selector label {
-    display: block;
+    margin-bottom: 20px;
 }
 
 .popup .color-selector .color-box {
-    width: 18px;
-    height: 18px;
-    border-radius: 5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.popup > .emailContainer > label {
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    width: 100%;
+.popup .color-label.selected .color-box {
+    transform: scale(1.15);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-.popup > .emailContainer label > input[type=checkbox] {
-    width: 14px;
-    height: 14px;
-    margin-bottom: 0px;
-    margin-right: 5px;
-    border-radius: 4px;
+/* Checkbox (Hatırlatıcılar) */
+.popup .emailContainer {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.popup .email-checkbox-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 5px;
-    width: 100%;
+.popup .emailContainer label {
+    color: #a1a1aa;
+    font-weight: 500;
 }
 
 .popup .email-checkbox-list label {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-size: .9em;
+    color: #e4e4e7;
+    cursor: pointer;
+    transition: color 0.2s;
 }
 
+.popup .email-checkbox-list label:hover {
+    color: #ffffff;
+}
+
+.popup > .emailContainer label > input[type=checkbox] {
+    accent-color: #8a63f7;
+}
+
+/* Buton Grubu */
 .popup .button-group {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 40px;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 30px;
 }
 
 .button-group button {
-    padding: 8px 16px;
+    padding: 10px 20px;
     font-size: 14px;
+    font-weight: 600;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
-    margin-right: 10px;
+    transition: all 0.3s ease;
 }
 
 .button-group .deleteBtn {
-    background-color: rgba(191, 20, 20, 0.8);
+    background-color: rgba(244, 63, 94, 0.1);
+    color: #f43f5e;
+    border: 1px solid rgba(244, 63, 94, 0.3);
+    margin-right: auto; /* Sil butonunu sola yaslar */
+}
+
+.button-group .deleteBtn:hover {
+    background-color: rgba(244, 63, 94, 0.2);
+    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
 }
 
 .button-group .cancelBtn {
-    background-color: #6c757d;
+    background-color: #3f3f46;
+}
+
+.button-group .cancelBtn:hover {
+    background-color: #52525b;
 }
 
 .popup button:last-child {
+    background: linear-gradient(135deg, #8a63f7 0%, #e85bc5 100%);
+    box-shadow: 0 4px 15px rgba(138, 99, 247, 0.4);
+}
 
-    background: linear-gradient(90deg, rgb(116, 89, 255) 0%, rgb(164, 89, 255) 60%);
+.popup button:last-child:hover {
+    box-shadow: 0 6px 20px rgba(138, 99, 247, 0.6);
+    transform: translateY(-2px);
 }

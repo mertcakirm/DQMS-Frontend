@@ -12,7 +12,8 @@ export const ActionPerm = Object.freeze({
     UserModify: 2 << 9,
     SendMail: 2 << 10
 });
-//4094 full yetki
+
+// 4094 full yetki
 export function getPermTitle(perm) {
     const permTitles = {
         [ActionPerm.None]: "Yetki Yok",
@@ -32,8 +33,8 @@ export function getPermTitle(perm) {
     return permTitles[perm] || "Bilinmeyen Yetki";
 }
 
-export function getContainedRoles(perms)
-{
+// Tüm yetki listesini döndürür
+export function getContainedRoles() {
     return Object.entries(ActionPerm).slice(1).map(([key, value]) => ({
         title: getPermTitle(value),
         name: key,
@@ -41,46 +42,43 @@ export function getContainedRoles(perms)
     }));
 }
 
-export function createPerms(array)
-{
-    var perms = 0;
-    array.forEach(perm => perms |= perm);
-    return perm;
+// Array içindeki tüm yetkileri birleştirir
+export function createPerms(array) {
+    return array.reduce((perms, currentPerm) => perms | currentPerm, 0);
 }
 
-export function addPerm(perms, newPerm)
-{
+// Mevcut yetkilere yeni yetki ekler
+export function addPerm(perms, newPerm) {
     return perms | newPerm;
 }
 
-export function removePerm(perms, removePerm)
-{
-    return perms ^ removePerm;
+// Mevcut yetkilerden istenen yetkiyi güvenli bir şekilde siler
+export function removePerm(perms, permToRemove) {
+    return perms & ~permToRemove; 
 }
 
-export function checkPerm(perms, checkFor)
-{
+// Belirli bir yetkinin olup olmadığını kontrol eder
+export function checkPerm(perms, checkFor) {
     return (perms & checkFor) === checkFor;
 }
 
-export function checkPerms(perms, checkForArray)
-{
+// Array içindeki yetkilerden HERHANGİ BİRİNE sahip mi kontrol eder
+export function checkPerms(perms, checkForArray) {
     return checkForArray.some(p => checkPerm(perms, p));
 }
 
-
-export function checkPermFromRole(role, checkFor)
-{
-    if (role == null)
-        return false;
-
-    return checkPerm(role.permissions ?? 0, checkFor);
+// Obje veya doğrudan sayı (roleValue) gönderildiğinde yetki kontrolü yapar
+export function checkPermFromRole(roleOrValue, checkFor) {
+    if (roleOrValue == null) return false;
+    
+    const perms = typeof roleOrValue === 'number' ? roleOrValue : (roleOrValue.permissions ?? 0);
+    return checkPerm(perms, checkFor);
 }
 
-export function checkPermsFromRole(role, checkForArray)
-{
-    if (role == null)
-        return false;
-
-    return checkPerms(role.permissions ?? 0, checkForArray);
+// Obje veya doğrudan sayı gönderildiğinde çoklu yetki kontrolü yapar
+export function checkPermsFromRole(roleOrValue, checkForArray) {
+    if (roleOrValue == null) return false;
+    
+    const perms = typeof roleOrValue === 'number' ? roleOrValue : (roleOrValue.permissions ?? 0);
+    return checkPerms(perms, checkForArray);
 }

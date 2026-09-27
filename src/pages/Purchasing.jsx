@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Sidebar from "../components/other/Navbar.jsx";
+import Sidebar from "../components/other/Sidebar.jsx";
 import PurchaseRequestForm from "../components/purchasing/PurchaseRequestForm.jsx";
 import ApprovedSupplierList from "../components/purchasing/ApprovedSupplierList.jsx";
 import SupplierEvaluationForm from "../components/purchasing/SupplierEvaluationForm.jsx";

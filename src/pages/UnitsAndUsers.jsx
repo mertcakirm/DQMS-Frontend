@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {matchPath, useLocation} from "react-router-dom";
-import Sidebar from "../components/other/Navbar.jsx";
+import Sidebar from "../components/other/Sidebar.jsx";
 import ManageUnits from "../components/UnitAndUsers/ManageUnits.jsx";
 import AnalizeUnit from "../components/UnitAndUsers/AnalizeUnit.jsx";
 import ManageUsers from "../components/UnitAndUsers/ManageUsers.jsx";

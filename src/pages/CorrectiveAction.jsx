@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
-import Sidebar from "../components/other/Navbar.jsx";
+import Sidebar from "../components/other/Sidebar.jsx";
 import CorrectiveActionForm from "../components/correctiveaction/CorrectiveActionForm.jsx";
 import CorrectiveActionTable from "../components/correctiveaction/CorrectiveActionTable.jsx";
 import ProcedurCorrective from "../components/correctiveaction/ProcedurCorrective.jsx";

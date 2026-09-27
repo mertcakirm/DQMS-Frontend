@@ -1,139 +1,215 @@
-.content-container{
-    position: absolute;
-    left: 0%;
-    width: 100%;
-    margin-top: 70px;
-
+/* Ana İçerik Konteyneri (280px Sidebar'a göre ayarlandı) */
+.content-container {
+    margin-left: 255px;
+    width: calc(100% - 230px);
+    min-height: 100vh;
+    padding: 0px 40px;
+    box-sizing: border-box;
 }
 
-.document-parent{
-    background: linear-gradient(#D2CBF5, #FFFFFF);
-    height: 200px;
+body {
+    background-color: #0f0f13 !important;
+    color: #e4e4e7; /* Koyu temaya uygun genel metin rengi */
 }
 
-.smalltitle{
+/* Belge Konteyneri */
+.document-parent {
+    background: #0f0f13;
+    min-height: 200px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.smalltitle {
     font-size: 16px;
-    font-weight: bold;
-    color: #563EC1;
+    font-weight: 600;
+    color: #8a63f7; /* Koyu temaya uygun neon mor */
+    letter-spacing: 0.3px;
 }
 
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+/* Navigasyon Hapları (Sekmeler) - Premium Dark Mode */
+.nav-pills .nav-link.active, 
+.nav-pills .show > .nav-link {
     color: #ffffff !important;
-    background-color: #9f92d3 !important;
+    background: linear-gradient(135deg, #8a63f7 0%, #e85bc5 100%) !important;
     border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(138, 99, 247, 0.4);
 }
 
 .nav-link {
-    color: #000!important;
-    border-radius: 30px!important;
-
+    color: #a1a1aa !important; /* Soluk gri */
+    border-radius: 30px !important;
+    font-weight: 500;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
 }
 
+.nav-link:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff !important;
+}
+
+/* Büyük Başlık (Sidebar ikonlarındaki neon gradient kullanıldı) */
 .large-title {
-    background: linear-gradient(85deg, rgb(116, 89, 255) 0%, rgb(153, 131, 252) 100%);
+    background: linear-gradient(135deg, #8a63f7 0%, #e85bc5 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: bold;
+    font-weight: 800;
 }
 
-.edit-btn-parent{
+/* Düzenle/Aksiyon Butonları */
+.edit-btn-parent {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-.edit-btn{
-    background: #b9afe3;
-    color: #FFFFFF;
-    border: 0;
+.edit-btn {
+    background: rgba(138, 99, 247, 0.15);
+    color: #8a63f7;
+    border: 1px solid rgba(138, 99, 247, 0.4);
     border-radius: 10px;
-    max-width:fit-content!important;
-    padding: 5px 20px;
+    max-width: fit-content !important;
+    padding: 8px 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.search-inp
-{
+.edit-btn:hover {
+    background: rgba(138, 99, 247, 0.3);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(138, 99, 247, 0.3);
+}
+
+/* Arama Kutusu - Koyu Tema */
+.search-inp {
     margin-left: 12px;
-    height: 40px;
+    height: 42px;
     border-radius: 20px;
-    border: 1px solid rgba(48, 47, 47, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0 16px;
+    transition: all 0.3s ease;
+    background-color: #27272a;
+    color: #ffffff;
 }
 
-.search-inp:focus-visible{
+.search-inp::placeholder {
+    color: #71717a;
+}
+
+.search-inp:focus-visible {
     outline: none;
+    border-color: #8a63f7;
+    background-color: #2a2a30;
+    box-shadow: 0 0 0 3px rgba(138, 99, 247, 0.2);
 }
 
-.revision-card{
-    border: 1px solid #000;
-    border-radius: 10px;
+/* Kart Tasarımları (Koyu Premium Zemin) */
+.revision-card, .role-card, .rev-card {
+    background: #18181b;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    color: #e4e4e7;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.acceptbtn{
-    background: #50d750 !important;
-    width: 70px!important;
-    height: 50px;
-    border-radius: 20px;
-    border: 0;
-}
-.acceptbtn2{
-    background: #ee0202 !important;
-    width: 70px!important;
-    height: 50px;
-    border-radius: 20px;
-    border: 0;
+.rev-card {
+    margin-bottom: 10px;
 }
 
-.rev-card
-{
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    width: 100%;
-    padding: 6px 12px;
-    border-radius: 6px;
+.revision-card:hover, .role-card:hover, .rev-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border-color: rgba(138, 99, 247, 0.3);
 }
 
-.role-card{
-    border: 1px solid #000;
-    border-radius: 10px;
+/* Aksiyon Butonları (Koyu Temaya Uygun Neon Renkler) */
+.acceptbtn {
+    background: rgba(16, 185, 129, 0.15) !important; 
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    color: #10b981;
+    font-weight: 600;
+    width: auto !important;
+    min-width: 80px;
+    height: 44px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
+.acceptbtn:hover {
+    background: rgba(16, 185, 129, 0.3) !important;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.acceptbtn2 {
+    background: rgba(244, 63, 94, 0.15) !important; 
+    border: 1px solid rgba(244, 63, 94, 0.4);
+    color: #f43f5e;
+    font-weight: 600;
+    width: auto !important;
+    min-width: 80px;
+    height: 44px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.acceptbtn2:hover {
+    background: rgba(244, 63, 94, 0.3) !important;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3);
+}
+
+/* Yetkisiz Erişim Ekranı */
 .unauthorized {
     width: 100%;
-    height: 100%;
-    z-index: 50;
+    min-height: calc(100vh - 60px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: rgb(190, 8, 8);
-    font-size: 20rem;
+    color: #f43f5e; /* Koyu temanın neon kırmızısı */
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
 }
 
 .unauthorized > svg {
-    width: 130px;
+    width: 120px;
+    margin-bottom: 20px;
 }
 
 .unauthorized > svg path {
-    fill: rgb(190, 8, 8);
+    fill: #f43f5e;
 }
 
-.unauth-page-error
-{
-    color: red;
+.unauth-page-error {
+    color: #f43f5e;
+    margin-top: 15px;
+    font-size: 1.2rem;
 }
 
-
-td{
-    max-width: 100px;
+/* Tablolar */
+td {
+    max-width: 150px;
     text-wrap: wrap;
     overflow-x: hidden;
     overflow-y: visible;
+    padding: 12px 10px;
+    vertical-align: middle;
+    color: #e4e4e7;
 }
 
-.untd{
-    width:auto !important;
-    max-width: none!important;
-    height: 80px !important;
+.untd {
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 80px !important;
 }
-

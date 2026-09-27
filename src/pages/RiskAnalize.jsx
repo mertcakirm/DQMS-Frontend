@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import IsgRisk from "../components/risks/isgRisk.jsx";
 import PeriodRisk from "../components/risks/periodRisk.jsx";
-import Sidebar from "../components/other/Navbar.jsx";
+import Sidebar from "../components/other/Sidebar.jsx";
 import RisksProcedur from "../components/risks/RisksProcedur.jsx";
 
 

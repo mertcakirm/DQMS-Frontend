@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./agenda.css";
-import Sidebar from "../other/Navbar.jsx";
+import Sidebar from "../other/Sidebar.jsx";
 import {
   createNewAgendaEvent,
   deleteAgendaEvent,
@@ -10,8 +10,6 @@ import {
 import {
   getLocalISOString,
   getTimeString,
-  localToUTC,
-  utcToLocal,
 } from "../../Helpers/dateTimeHelpers.js";
 
 export const AgendaColors = [
@@ -49,7 +47,7 @@ function Agenda() {
             utcDateTime.setHours(utcHours, utcMinutes, 0, 0);
           }
 
-          const localDateTime = utcDateTime; //utcToLocal(utcDateTime);
+          const localDateTime = utcDateTime;
 
           return {
             id: r.eventId,
@@ -66,10 +64,7 @@ function Agenda() {
   }, [currentObj]);
 
   const openPopup = (day, event = null) => {
-    setPopupData({
-      day: day,
-      event: event,
-    });
+    setPopupData({ day: day, event: event });
     setIsPopupOpen(true);
   };
 
@@ -83,8 +78,7 @@ function Agenda() {
     const currentMonth = currentObj.month;
 
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-    const firstDayOfMonth =
-      (new Date(currentYear, currentMonth, 1).getDay() + 6) % 7;
+    const firstDayOfMonth = (new Date(currentYear, currentMonth, 1).getDay() + 6) % 7;
 
     const calendarDays = [];
     for (let i = 0; i < firstDayOfMonth; i++) {
@@ -120,7 +114,8 @@ function Agenda() {
       calendarDays.push(
         <td key={day}>
           <div className="calendar-day" onClick={() => openPopup(day)}>
-            <span style={{ color: isToday(day) ? "blue" : "black" }}>
+            {/* Bugün sınıfı için dinamik yapı atandı */}
+            <span className={`calendar-day-number ${isToday(day) ? "today-highlight" : ""}`}>
               {day}
             </span>
             <ul>
@@ -155,14 +150,20 @@ function Agenda() {
   };
 
   return (
-    <div className="document-parent">
+    <div className="document-parent" style={{ background: "transparent", boxShadow: "none" }}>
       <Sidebar />
-      <div className="content-container px-5" data-aos="fade-up">
-        <div
-          className="row justify-content-between align-items-center"
-          style={{ height: "100vh" }}
-        >
-          <h3 className="col-12 large-title mt-5">AJANDA</h3>
+      <div className="content-container" data-aos="fade-up">
+        <div className="row justify-content-between align-items-center p-3" style={{ height: "100vh" }}>
+          {/* Büyük Neon Başlık */}
+          <h3 className="col-12 large-title mt-4" style={{ 
+              background: "linear-gradient(135deg, #8a63f7 0%, #e85bc5 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              fontWeight: 800,
+              fontSize: "2rem"
+          }}>
+            AJANDA
+          </h3>
           <div className="agenda-container">
             <div className="selectors">
               <div className="year-selector">
@@ -203,69 +204,23 @@ function Agenda() {
                 </select>
               </div>
             </div>
+            
             <table className="calendar-table">
               <thead>
                 <tr>
-                  <th
-                    style={{
-                      background:
-                        "linear-gradient(130deg, rgba(134,72,209,0.2) 0%, rgba(98,31,180,0.3) 87%)",
-                    }}
-                  >
-                    Pzt
-                  </th>
-                  <th
-                    style={{
-                      background:
-                        "linear-gradient(130deg, rgba(134,72,209,0.2) 0%, rgba(98,31,180,0.3) 87%)",
-                    }}
-                  >
-                    Sal
-                  </th>
-                  <th
-                    style={{
-                      background:
-                        "linear-gradient(130deg, rgba(134,72,209,0.2) 0%, rgba(98,31,180,0.3) 87%)",
-                    }}
-                  >
-                    Çar
-                  </th>
-                  <th
-                    style={{
-                      background:
-                        "linear-gradient(130deg, rgba(134,72,209,0.2) 0%, rgba(98,31,180,0.3) 87%)",
-                    }}
-                  >
-                    Per
-                  </th>
-                  <th
-                    style={{
-                      background:
-                        "linear-gradient(130deg, rgba(134,72,209,0.2) 0%, rgba(98,31,180,0.3) 87%)",
-                    }}
-                  >
-                    Cum
-                  </th>
-                  <th
-                    style={{
-                      background:
-                        "linear-gradient(130deg, rgba(134,72,209,0.2) 0%, rgba(98,31,180,0.3) 87%)",
-                    }}
-                  >
-                    Cmt
-                  </th>
-                  <th
-                    style={{
-                      background:
-                        "linear-gradient(130deg, rgba(134,72,209,0.2) 0%, rgba(98,31,180,0.3) 87%)",
-                    }}
-                  >
-                    Paz
-                  </th>
+                  {/* Inline gradient stilleri kaldırılıp CSS'e devredildi */}
+                  <th>Pzt</th>
+                  <th>Sal</th>
+                  <th>Çar</th>
+                  <th>Per</th>
+                  <th>Cum</th>
+                  <th>Cmt</th>
+                  <th>Paz</th>
                 </tr>
               </thead>
               <tbody>{renderCalendar()}</tbody>
             </table>
+            
             {isPopupOpen && (
               <Popup
                 popupCloser={closePopup}
@@ -276,7 +231,6 @@ function Agenda() {
               />
             )}
           </div>
-          <div />
         </div>
       </div>
     </div>
@@ -347,7 +301,7 @@ function Popup({ popupCloser, eventSetter, popupData, eventArray, month }) {
       } else {
         localDateTime.setHours(0, 0, 1, 0);
       }
-      const utcEventDateTime = localDateTime; //localToUTC(localDateTime);
+      const utcEventDateTime = localDateTime;
 
       const eventId = await createNewAgendaEvent({
         date: getLocalISOString(utcEventDateTime),
@@ -397,7 +351,6 @@ function Popup({ popupCloser, eventSetter, popupData, eventArray, month }) {
     eventSetter(eventArray.filter((ee) => ee.id !== popupData.event.id));
 
     (async () => {
-      // API Delete
       await deleteAgendaEvent(popupData.event.id);
       popupCloser();
     })();
@@ -414,6 +367,7 @@ function Popup({ popupCloser, eventSetter, popupData, eventArray, month }) {
       <div className="popup" onClick={(e) => e.stopPropagation()}>
         <h2>{popupData?.event ? "Etkinlik Detayları" : "Yeni Etkinlik"}</h2>
         <div className="divider" />
+        
         <div className="color-selector">
           {colors.map((color, index) => (
             <label
@@ -426,26 +380,17 @@ function Popup({ popupCloser, eventSetter, popupData, eventArray, month }) {
                 value={color}
                 checked={event.colorIndex === index}
                 onChange={() => handleColorChange(index)}
-                style={{ display: "none" }}
               />
               <div
                 className="color-box"
-                style={{
-                  backgroundColor: color,
-                }}
+                style={{ backgroundColor: color }}
               >
                 {event.colorIndex === index && (
-                  <svg
-                    width="20px"
-                    height="14px"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+                  <svg width="14px" height="10px" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M4 12.6111L8.92308 17.5L20 6.5"
                       stroke="#fff"
-                      strokeWidth="2"
+                      strokeWidth="3"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
@@ -458,7 +403,7 @@ function Popup({ popupCloser, eventSetter, popupData, eventArray, month }) {
 
         <input
           type="text"
-          placeholder="Başlık"
+          placeholder="Etkinlik Başlığı..."
           value={event.title}
           onChange={(e) => setEvent({ ...event, title: e.target.value })}
         />
@@ -468,7 +413,7 @@ function Popup({ popupCloser, eventSetter, popupData, eventArray, month }) {
           onChange={(e) => setEvent({ ...event, time: e.target.value })}
         />
         <textarea
-          placeholder="Açıklama"
+          placeholder="Etkinlik Açıklaması..."
           maxLength="1000"
           value={event.description ?? ""}
           style={{ height: "100px", resize: "none" }}
@@ -478,69 +423,21 @@ function Popup({ popupCloser, eventSetter, popupData, eventArray, month }) {
         <div className="emailContainer">
           <label style={{ marginBottom: "10px" }}>E-posta ile hatırlat</label>
           <div className="email-checkbox-list">
-            <label>
-              <input
-                type="checkbox"
-                mail-flag="1"
-                onChange={handleMailPrefChange}
-              />
-              Etkinlik zamanında
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                mail-flag="2"
-                onChange={handleMailPrefChange}
-              />
-              10 dakika önce
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                mail-flag="4"
-                onChange={handleMailPrefChange}
-              />
-              30 dakika önce
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                mail-flag="8"
-                onChange={handleMailPrefChange}
-              />
-              1 saat önce
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                mail-flag="16"
-                onChange={handleMailPrefChange}
-              />
-              1 gün önce
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                mail-flag="32"
-                onChange={handleMailPrefChange}
-              />
-              3 gün önce
-            </label>
+            <label><input type="checkbox" mail-flag="1" onChange={handleMailPrefChange} /> Etkinlik zamanında</label>
+            <label><input type="checkbox" mail-flag="2" onChange={handleMailPrefChange} /> 10 dakika önce</label>
+            <label><input type="checkbox" mail-flag="4" onChange={handleMailPrefChange} /> 30 dakika önce</label>
+            <label><input type="checkbox" mail-flag="8" onChange={handleMailPrefChange} /> 1 saat önce</label>
+            <label><input type="checkbox" mail-flag="16" onChange={handleMailPrefChange} /> 1 gün önce</label>
+            <label><input type="checkbox" mail-flag="32" onChange={handleMailPrefChange} /> 3 gün önce</label>
           </div>
         </div>
 
         <div className="button-group">
           {popupData.event != null && (
-            <button className="deleteBtn" onClick={onDelete}>
-              Sil
-            </button>
+            <button className="deleteBtn" onClick={onDelete}>Sil</button>
           )}
-          <button className="cancelBtn" onClick={() => popupCloser()}>
-            İptal
-          </button>
-          <button
-            onClick={() => (popupData.event != null ? onUpdate() : onSave())}
-          >
+          <button className="cancelBtn" onClick={() => popupCloser()}>İptal</button>
+          <button onClick={() => (popupData.event != null ? onUpdate() : onSave())}>
             {popupData.event ? "Güncelle" : "Kaydet"}
           </button>
         </div>

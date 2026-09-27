@@ -1,13 +1,13 @@
-import Sidebar from "../components/other/Navbar.jsx";
+import Sidebar from "../components/other/Sidebar.jsx";
 import "./css/Style.css";
 import "./css/Dashboard.css";
-import {useEffect, useState} from "react";
-import {getDashboard} from "../API/Admin.js";
-import {ResponsivePie} from "@nivo/pie";
-import {getTypeTitle} from "../Helpers/typeMapper.js";
-import {getAgendaEvents} from "../API/Agenda.js";
-import {formatLocalDate, utcToLocal} from "../Helpers/dateTimeHelpers.js";
-import {AgendaColors} from "../components/agenda/Agenda.jsx";
+import { useEffect, useState } from "react";
+import { getDashboard } from "../API/Admin.js";
+import { ResponsivePie } from "@nivo/pie";
+import { getTypeTitle } from "../Helpers/typeMapper.js";
+import { getAgendaEvents } from "../API/Agenda.js";
+import { formatLocalDate, utcToLocal } from "../Helpers/dateTimeHelpers.js";
+import { AgendaColors } from "../components/agenda/Agenda.jsx";
 
 const Home = () => {
     const [data, setData] = useState(null);
@@ -20,11 +20,11 @@ const Home = () => {
             const todayDate = new Date();
             const agendaData = await getAgendaEvents(
                 todayDate.getFullYear(),
-                todayDate.getMonth() + 1,
+                todayDate.getMonth() + 1
             );
 
             const totalDepartmentDocuments = Object.values(
-                _data.m_DepartmentDocumentCounts,
+                _data.m_DepartmentDocumentCounts
             ).reduce((acc, a) => acc + a, 0);
 
             const dataValue = {
@@ -55,7 +55,7 @@ const Home = () => {
                         name: key,
                         progress: (value / totalDepartmentDocuments) * 100,
                         count: value,
-                    }),
+                    })
                 ),
             };
 
@@ -77,113 +77,84 @@ const Home = () => {
         return () => clearInterval(timer);
     }, []);
 
-    if (data == null) return;
+    if (data == null) return null;
 
     return (
         <div>
-            <Sidebar/>
-            <div className="content-container header-bg m-0 p-5">
-                <div className="row justify-content-center column-gap-3 py-5" data-aos="fade-up">
-                    <div className="col-12 pt-2 row">
+            <Sidebar />
+            
+            {/* Eski "header-bg p-5 m-0" sınıfları kaldırıldı. Global "content-container" padding/margin kurallarına bırakıldı. */}
+            <div className="content-container">
+                <div className="row justify-content-center pt-5" data-aos="fade-up">
+                    
+                    {/* ÜST İSTATİSTİK KARTLARI */}
+                    <div className="col-12 row mb-4">
                         <div className="col-3">
-                            <div className="dashboard-card  p-3">
-                                <p className="dashboard-card-title col-12 text-center">
-                                    Kullanıcı Sayısı
-                                </p>
-                                <div className="dashboard-card-info col-12 text-center">
+                            <div className="dashboard-card">
+                                <p className="dashboard-card-title text-center">Kullanıcı Sayısı</p>
+                                <div className="dashboard-card-info text-center">
                                     {data.userCount}
                                 </div>
                             </div>
                         </div>
                         <div className="col-3">
-                            <div className="dashboard-card  p-3">
-                                <p className="dashboard-card-title col-12 text-center">
-                                    Doküman Sayısı
-                                </p>
-                                <div className="dashboard-card-info col-12 text-center">
-                                    Toplam :
-                                    {" " +
-                                        Object.values(data.documentCounts).reduce(
-                                            (acc, a) => acc + a,
-                                            0,
-                                        )}
+                            <div className="dashboard-card">
+                                <p className="dashboard-card-title text-center">Doküman Sayısı</p>
+                                <div className="dashboard-card-info text-center">
+                                    Toplam: {Object.values(data.documentCounts).reduce((acc, a) => acc + a, 0)}
                                 </div>
-                                <div className="dashboard-card-info col-12 text-center">
-                                    Aylık :
-                                    {" " +
-                                        Object.values(data.m_DocumentCounts).reduce(
-                                            (acc, a) => acc + a,
-                                            0,
-                                        )}
+                                <div className="dashboard-card-info text-center mt-1" style={{ fontSize: '16px', color: '#6e6e80' }}>
+                                    Aylık: {Object.values(data.m_DocumentCounts).reduce((acc, a) => acc + a, 0)}
                                 </div>
                             </div>
                         </div>
                         <div className="col-3">
-                            <div className="dashboard-card p-2">
-                                <p className="dashboard-card-title col-12 text-center">
-                                    Bekleyen Revizyon Sayısı
-                                </p>
-                                <div className="dashboard-card-info col-12 text-center">
-                                    Talep : {data.pendingRevisionRequestsCount}
+                            <div className="dashboard-card">
+                                <p className="dashboard-card-title text-center">Bekleyen Revizyon</p>
+                                <div className="dashboard-card-info text-center">
+                                    Talep: {data.pendingRevisionRequestsCount}
                                 </div>
-                                <div className="dashboard-card-info col-12 text-center">
-                                    Revizyon : {data.pendingRevisionsCount}
+                                <div className="dashboard-card-info text-center mt-1" style={{ fontSize: '16px', color: '#6e6e80' }}>
+                                    Revizyon: {data.pendingRevisionsCount}
                                 </div>
                             </div>
                         </div>
                         <div className="col-3">
-                            <div className="dashboard-card p-3">
-                                <div className="dashboard-card-info-time col-12 text-center">
+                            <div className="dashboard-card">
+                                <div className="dashboard-card-info-time text-center">
                                     {time}
                                 </div>
-                                <div className="dashboard-card-info col-12 text-center">
+                                <div className="dashboard-card-info text-center" style={{ fontSize: '16px', color: '#6e6e80' }}>
                                     {formatLocalDate(new Date(), false)}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="row col-12 mt-5 justify-content-center">
+                    {/* ORTA BÖLÜM: GRAFİKLER VE ETKİNLİKLER */}
+                    <div className="row col-12 mb-4 justify-content-center">
                         <div className="col-8">
-                            <div className="shadow-card p-3 row" style={{height: "341px"}}>
-                                <div className="col-6">
-                                    <p className="dashboard-card-title col-12 text-center">
-                                        Tüm Dokümanlar
-                                    </p>
-                                    <div className="col-12" style={{height: "260px"}}>
-                                        {/* Tüm Dokümanlar  */}
-                                        <MyResponsivePie data={data.chart1}/>
+                            <div className="shadow-card row m-0" style={{ height: "360px" }}>
+                                <div className="col-6 d-flex flex-column">
+                                    <p className="dashboard-card-title text-center">Tüm Dokümanlar</p>
+                                    <div style={{ flex: 1, minHeight: 0 }}>
+                                        <MyResponsivePie data={data.chart1} />
                                     </div>
                                 </div>
-                                <div className="col-6">
-                                    <p className="dashboard-card-title col-12 text-center">
-                                        Aylık Dokümanlar
-                                    </p>
-                                    <div className="col-12" style={{height: "260px"}}>
-                                        {/* Aylık Dokümanlar  */}
-                                        <MyResponsivePie data={data.chart1}/>
+                                <div className="col-6 d-flex flex-column">
+                                    <p className="dashboard-card-title text-center">Aylık Dokümanlar</p>
+                                    <div style={{ flex: 1, minHeight: 0 }}>
+                                        {/* chart1 yerine chart2 kullanılarak hata düzeltildi */}
+                                        <MyResponsivePie data={data.chart2} />
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
                         <div className="col-4">
-                            <div
-                                className="shadow-card p-3"
-                                style={{height: "340px", overflow: "auto"}}
-                            >
-                                <p className="dashboard-card-title col-12 text-center">
-                                    Günlük Etkinlikler
-                                </p>
-                                <div
-                                    className="col-12"
-                                    style={{
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        gap: "10px",
-                                        alignItems: "center",
-                                        overflowY: "auto",
-                                    }}
-                                >
+                            <div className="shadow-card custom-scrollbar" style={{ height: "360px", overflowY: "auto" }}>
+                                <p className="dashboard-card-title text-center">Günlük Etkinlikler</p>
+                                <div className="d-flex flex-column gap-2 mt-2">
                                     {data.dailyEvents.length > 0 ? (
                                         data.dailyEvents.map((event) => (
                                             <div
@@ -199,45 +170,22 @@ const Home = () => {
                                                         background: AgendaColors[event.colorIndex],
                                                         height: "100%",
                                                         width: "6px",
-                                                        borderTopLeftRadius: "4px",
-                                                        borderBottomLeftRadius: "4px",
+                                                        borderTopLeftRadius: "12px",
+                                                        borderBottomLeftRadius: "12px",
                                                     }}
                                                 />
-                                                <div style={{marginLeft: "20px"}}>
-                                                    <span
-                                                        style={{
-                                                            fontSize: "19px",
-                                                            fontWeight: "600",
-                                                            color: "rgb(37,37,43)",
-                                                            display: "flex",
-                                                            flexDirection: "row",
-                                                            justifyContent: "center",
-                                                            alignItems: "center",
-                                                        }}
-                                                    >
-                                                      {event.title}
+                                                <div className="w-100 d-flex justify-content-between align-items-center">
+                                                    <span style={{ fontSize: "16px", fontWeight: "600", color: "#25252b" }}>
+                                                        {event.title}
                                                     </span>
-                                                    <span
-                                                        style={{
-                                                            fontSize: "16px",
-                                                            color: "rgb(70,70,81)",
-                                                        }}
-                                                    >
-                                                      {event.time ?? ""}
+                                                    <span style={{ fontSize: "14px", color: "#6e6e80", fontWeight: "500" }}>
+                                                        {event.time ?? ""}
                                                     </span>
                                                 </div>
                                             </div>
                                         ))
                                     ) : (
-                                        <div style={{
-                                            display: "flex",
-                                            justifyContent: "center",
-                                            alignItems: "center",
-                                            height: "100px",
-                                            textAlign:"center",
-                                            fontSize: "18px",
-                                            color: "black"
-                                        }}>
+                                        <div className="d-flex justify-content-center align-items-center text-muted" style={{ height: "150px" }}>
                                             Bugün için etkinlik yok.
                                         </div>
                                     )}
@@ -246,108 +194,77 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="row col-12 mt-5 justify-content-center">
+                    {/* ALT BÖLÜM: DEPARTMAN VE REVİZYON DETAYLARI */}
+                    <div className="row col-12 justify-content-center">
                         <div className="col-4">
-                            <div className="shadow-card p-3" style={{height: "250px"}}>
-                                <p className="dashboard-card-title col-12 text-center">
-                                    Departmanlara Göre Dokümanlar
-                                </p>
-                                <div
-                                    className="col-12"
-                                    style={{
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        gap: "10px",
-                                        height: "170px",
-                                        overflowY: "auto"
-                                    }}
-                                >
+                            <div className="shadow-card" style={{ height: "300px" }}>
+                                <p className="dashboard-card-title text-center">Departmanlara Göre Dokümanlar</p>
+                                <div className="custom-scrollbar mt-2" style={{ overflowY: "auto", display: "flex", flexDirection: "column", gap: "10px" }}>
                                     {data.departmentDocs.length > 0 ? (
                                         data.departmentDocs.map((o) => (
                                             <div key={o.name} className="dashboard-department-card">
-                                                <div
-                                                    style={{
-                                                        marginLeft: "12px",
-                                                        fontWeight: "500",
-                                                        display: "flex",
-                                                        alignItems: "center",
-                                                        gap: "15px",
-                                                    }}
-                                                >
-                                                    <span>{o.name}</span>
-                                                </div>
+                                                <span style={{ fontWeight: "600", color: "#494949", minWidth: "80px" }}>
+                                                    {o.name}
+                                                </span>
                                                 <div className="dashboard-card-progress-bar">
                                                     <div
                                                         className="dashboard-card-progress"
                                                         style={{ width: `${o.progress}%` }}
                                                     />
                                                 </div>
-                                                <span style={{ marginRight: "24px", fontWeight: "500" }}>
+                                                <span style={{ fontWeight: "700", color: "#25252b" }}>
                                                     {o.count}
                                                 </span>
                                             </div>
                                         ))
                                     ) : (
-                                        <div
-                                            style={{
-                                                display: "flex",
-                                                justifyContent: "center",
-                                                textAlign:"center",
-                                                alignItems: "center",
-                                                height: "100px",
-                                                fontSize: "18px",
-                                                color: "black",
-                                            }}
-                                        >
+                                        <div className="d-flex justify-content-center align-items-center text-muted" style={{ height: "100px" }}>
                                             Departman dokümanı bulunamadı.
                                         </div>
                                     )}
                                 </div>
                             </div>
                         </div>
+                        
                         <div className="col-8">
-                            <div className="shadow-card p-3 row" style={{height: "250px"}}>
-                                <div className="col-6">
-                                    <p className="dashboard-card-title col-12 text-center">
-                                        Revizyon Talepleri
-                                    </p>
-                                    <div className="col-12 dashboard-revisions">
+                            <div className="shadow-card row m-0" style={{ height: "300px" }}>
+                                <div className="col-6 d-flex flex-column">
+                                    <p className="dashboard-card-title text-center">Revizyon Talepleri</p>
+                                    <div className="dashboard-revisions">
                                         <span>
-                                          {data.m_RejectedRevisionReqCount +
-                                              data.m_AcceptedRevisionReqCount}
+                                            {data.m_RejectedRevisionReqCount + data.m_AcceptedRevisionReqCount}
                                         </span>
-                                        <div>
-                                          <span style={{color: "green"}}>
-                                            Kabul Edilen: <b>{data.m_AcceptedRevisionReqCount}</b>
-                                          </span>
-                                            <span style={{color: "red"}}>
-                                            Reddedilen: <b>{data.m_RejectedRevisionReqCount}</b>
-                                          </span>
+                                        <div className="dashboard-revisions-stats">
+                                            <span className="text-success-modern">
+                                                Kabul: <b>{data.m_AcceptedRevisionReqCount}</b>
+                                            </span>
+                                            <span className="text-danger-modern">
+                                                Ret: <b>{data.m_RejectedRevisionReqCount}</b>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-6">
-                                    <p className="dashboard-card-title col-12 text-center">
-                                        Revizyon Sayısı
-                                    </p>
-                                    <div className="col-12 dashboard-revisions">
+                                <div className="col-6 d-flex flex-column">
+                                    <p className="dashboard-card-title text-center">Revizyon Sayısı</p>
+                                    <div className="dashboard-revisions">
                                         <span>
-                                          {data.m_AcceptedRevisionCount +
-                                              data.m_RejectedRevisionCount}
+                                            {data.m_AcceptedRevisionCount + data.m_RejectedRevisionCount}
                                         </span>
-                                        <div>
-                                          <span style={{color: "green"}}>
-                                            Kabul Edilen: <b>{data.m_RejectedRevisionCount}</b>
-                                          </span>
-                                            <span style={{color: "red"}}>
-                                            Reddedilen: <b>{data.m_AcceptedRevisionCount}</b>
-                                          </span>
+                                        <div className="dashboard-revisions-stats">
+                                            {/* Değerlerin ters yazıldığı mantık hatası düzeltildi */}
+                                            <span className="text-success-modern">
+                                                Kabul: <b>{data.m_AcceptedRevisionCount}</b>
+                                            </span>
+                                            <span className="text-danger-modern">
+                                                Ret: <b>{data.m_RejectedRevisionCount}</b>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -356,29 +273,22 @@ const Home = () => {
 
 export default Home;
 
-const MyResponsivePie = ({data}) => (
+const MyResponsivePie = ({ data }) => (
     <ResponsivePie
         data={data}
-        margin={{top: 20, right: 10, bottom: 30, left: 10}}
-        innerRadius={0.5}
-        padAngle={0.7}
-        cornerRadius={3}
+        margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+        innerRadius={0.6} /* İçi biraz daha boşaltıldı, modern görünüm */
+        padAngle={1.5}
+        cornerRadius={4}
         activeOuterRadiusOffset={8}
-        borderWidth={1}
-        borderColor={{
-            from: "color",
-            modifiers: [["darker", 0.2]],
-        }}
+        borderWidth={0}
         arcLinkLabelsSkipAngle={10}
-        arcLinkLabelsTextColor="#333333"
+        arcLinkLabelsTextColor="#6e6e80"
         arcLinkLabelsThickness={2}
-        arcLinkLabelsColor={{from: "color"}}
+        arcLinkLabelsColor={{ from: "color" }}
         arcLabelsSkipAngle={10}
-        arcLabelsTextColor={{
-            from: "color",
-            modifiers: [["darker", 2]],
-        }}
+        arcLabelsTextColor="#ffffff"
         enableArcLinkLabels={false}
-        colors={{scheme: "paired"}}
+        colors={['#5030E5', '#D232AF', '#8c78f0', '#e384ce', '#b9afe3']} /* Marka renkleri palete eklendi */
     />
 );

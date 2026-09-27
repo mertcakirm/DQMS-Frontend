@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import Sidebar from "../components/other/Navbar.jsx";
+import Sidebar from "../components/other/Sidebar.jsx";
 import {getAllRoles} from "../API/Role.js";
 import {getUsers} from "../API/User.js";
 import {
