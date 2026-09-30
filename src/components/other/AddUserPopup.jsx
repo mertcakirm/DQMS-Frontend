@@ -36,7 +36,7 @@ const AddUserPopup = ({onClose}) => {
             <div className="popup-content2 pt-3" data-aos="zoom-in">
                 <button className="popup-close-btn" onClick={() => onClose(false)}>&times;</button>
                 <div className="row justify-content-center align-items-center row-gap-3">
-                    <div className="fs-4 text-center">Kullanıcı Ekle</div>
+                    <div className="fs-4 popup-title text-center">Kullanıcı Ekle</div>
                     <input
                         type="text"
                         placeholder="Kullanıcı Adı"

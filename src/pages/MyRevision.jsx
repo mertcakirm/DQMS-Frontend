@@ -101,7 +101,7 @@ const MyRevision = () => {
                       </div>
                     ))}
                   {revisionRequests.length === 0 && (
-                    <div className="text-center col-12">
+                    <div className="text-center col-12" style={{color:'#fff'}}>
                       Talebiniz bulunmamaktadır
                     </div>
                   )}
@@ -179,7 +179,7 @@ const MyRevision = () => {
                       </div>
                     ))}
                   {revisionRequests.length === 0 && (
-                    <div className="text-center col-12">
+                    <div className="text-center col-12" style={{color:'#fff'}}>
                       Bekleyen talep işlemi bulunmamaktadır
                     </div>
                   )}

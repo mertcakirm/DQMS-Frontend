@@ -192,7 +192,7 @@ const Profile = () => {
                                         ["Satın Alma Durum Değişikliği", 1 << 10],
                                     ].map(([title, value]) => (
                                         <div className="row col-12 align-items-center" key={value}>
-                                            <label className="col-10">{title}</label>
+                                            <label className="col-10" style={{color:'#fff'}}>{title}</label>
                                             <input
                                                 type="checkbox"
                                                 className="switch"

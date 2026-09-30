@@ -1,112 +1,140 @@
-.add-document-card-flex{
+.add-document-card-flex {
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
 }
 
-.create-doc-p{
-    padding: 0!important;
-    color: #563EC1;
+.create-doc-p {
+    padding: 0 !important;
+    color: #a78bfa; /* Koyu temaya uygun neon/açık mor */
 }
 
-.create-doc-textarea{
+/* Input ve Textarea Ortak Koyu Tema Stilleri */
+.create-doc-textarea,
+.create-doc-inp,
+.create-doc-inp2 {
     border: 0;
-    border-bottom: 1px solid #000;
-}
-.create-doc-textarea:focus{
-    outline: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    background: transparent;
+    color: #e4e4e7;
+    transition: all 0.3s ease;
 }
 
+.create-doc-inp {
+    line-height: 50px;
+    border-width: thin !important;
+}
 
-.create-doc-card-header{
-    background: rgb(134,72,209);
-    background: linear-gradient(130deg, rgba(134,72,209,0.2) 0%, rgba(98,31,180,0.3) 87%);
+.create-doc-inp2 {
+    line-height: 50px;
+    border-width: thin !important;
+    width: 100%;
+}
+
+.create-doc-textarea:focus,
+.create-doc-inp:focus,
+.create-doc-inp2:focus {
+    outline: none !important;
+    border-bottom: 1px solid #8a63f7;
+    box-shadow: 0 1px 0 0 rgba(138, 99, 247, 0.5); /* Odaklanıldığında hafif mor parlama */
+}
+
+/* Kart Başlığı */
+.create-doc-card-header {
+    background: linear-gradient(130deg, rgba(138, 99, 247, 0.15) 0%, rgba(98, 31, 180, 0.1) 100%);
+    border-bottom: 1px solid rgba(138, 99, 247, 0.2);
+    color: #ffffff;
     font-weight: bold;
 }
 
-.create-doc-li{
+.create-doc-li {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 5px;
 }
 
-.create-doc-li-flex{
+/* Dosya Yükleme / Sürükle Bırak Alanı */
+.create-doc-li-flex {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px dashed #ccc;
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.02);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
-    color: #888;
+    color: #a1a1aa;
     text-align: center;
-    transition: background-color 0.2s ease;
+    transition: all 0.3s ease;
 }
 
-.print-btn{
-    background: rgb(190,86,224);
-    background: linear-gradient(130deg, rgba(190,86,224,0.7147233893557423) 0%, rgba(100,43,199,0.5998774509803921) 87%);
+.create-doc-li-flex:hover {
+    background: rgba(138, 99, 247, 0.05);
+    border-color: rgba(138, 99, 247, 0.5);
+    color: #ffffff;
+}
+
+/* Primary Butonlar (Mor Gradient) */
+.print-btn,
+.print-btn2 {
+    background: linear-gradient(130deg, #8a63f7 0%, #621fb4 100%);
+    box-shadow: 0 4px 15px rgba(138, 99, 247, 0.2);
     border: 0;
     border-radius: 10px;
+    padding: 10px;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.print-btn {
     width: 100px;
-    padding: 10px;
-    color: #FFFFFF;
-    font-weight: bold;
-    text-align: center;
 }
 
-.print-btn2{
-    background: rgb(190,86,224);
-    background: linear-gradient(130deg, rgba(190,86,224,0.7147233893557423) 0%, rgba(100,43,199,0.5998774509803921) 87%);
+.print-btn:hover,
+.print-btn2:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(138, 99, 247, 0.4);
+}
+
+/* Danger Buton (Kırmızı Gradient) */
+.danger-btn-1 {
+    background: linear-gradient(130deg, #ef4444 0%, #b91c1c 100%);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
     border: 0;
     border-radius: 10px;
     padding: 10px;
     color: #FFFFFF;
     font-weight: bold;
     text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-.danger-btn-1
-{
-    background: rgb(190,86,224);
-    background: linear-gradient(130deg, rgb(218, 35, 35) 0%, rgba(135, 4, 4, 0.95) 100%);
+.danger-btn-1:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* Success Buton (Yeşil Gradient) */
+.success-btn-1 {
+    background: linear-gradient(130deg, #22c55e 0%, #15803d 100%);
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
     border: 0;
     border-radius: 10px;
     padding: 10px;
     color: #FFFFFF;
     font-weight: bold;
     text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-.success-btn-1
-{
-    background: rgb(190,86,224);
-    background: linear-gradient(130deg, rgba(38, 239, 32, 0.71) 0%, rgba(18, 143, 38, 0.86) 100%);
-    border: 0;
-    border-radius: 10px;
-    padding: 10px;
-    color: #FFFFFF;
-    font-weight: bold;
-    text-align: center;
-}
-
-.create-doc-inp{
-    border: 0;
-    border-bottom: 1px solid #000;
-    line-height: 50px;
-    border-width: thin!important;
-    outline:none!important;
-}
-
-
-.create-doc-inp2{
-    border: 0;
-    border-bottom: 1px solid #000;
-    line-height: 50px;
-    border-width: thin!important;
-    outline:none!important;
-    width: 100%;
-    background: transparent;
+.success-btn-1:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
 }

@@ -64,6 +64,11 @@
     position: absolute;
     top: 0px;
     right: 10px;
+    color: #fff!important;
+}
+
+.popup-title{
+        color: #fff!important;
 }
 
 .ui-error-circle {

@@ -99,7 +99,7 @@ const AdminPanel = () => {
                                     <UnauthPnl/>
                                 ) : (
                                     <>
-                                        <table className="table table-bordered table-striped mt-2">
+                                        <table className="table table-striped mt-2">
                                             <thead>
                                             <tr>
                                                 <th className="purple-text">Kullanıcı Adı</th>

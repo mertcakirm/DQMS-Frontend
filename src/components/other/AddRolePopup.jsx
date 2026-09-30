@@ -25,7 +25,7 @@ const AddRolePopup = ({onClose}) => {
             <div className="popup-content2" data-aos="zoom-in">
                 <button className="popup-close-btn" onClick={() => onClose(false)}>&times;</button>
                 <div className="row justify-content-center align-items-center row-gap-3">
-                    <div className="titles text-center card-header create-doc-card-header py-3">Rol Ekle</div>
+                    <div className="titles text-center card-header create-doc-card-header py-3 popup-title">Rol Ekle</div>
                     <div
                         className="col-6 col-sm-4 py-5"
                         style={{
@@ -70,7 +70,7 @@ const AddRolePopup = ({onClose}) => {
                                         style={{ marginRight: "5px" }}
                                         type="checkbox"
                                     />
-                                    <label>{getPermTitle(value)}</label>
+                                    <label style={{color:'#fff'}}>{getPermTitle(value)}</label>
                                 </div>
                             ))}
                     </div>
